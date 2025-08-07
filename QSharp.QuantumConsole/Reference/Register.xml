@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Program>
+  <Qubits>
+    <Qubit>
+      <Ket0 Label="A" Coefficient="0.732"></Ket0>
+      <Ket1 Label="B" Coefficient="0.681"></Ket1>
+    </Qubit>
+    <Qubit>
+      <Ket0 Label="C" Coefficient="0.400"></Ket0>
+      <Ket1 Label="D" Coefficient="0.917"></Ket1>
+    </Qubit>
+  </Qubits>
+  <Commands>
+    <Command Name="X" Target="AC" />
+    <Command Name="X" Target="AC" />
+  </Commands>
+</Program>

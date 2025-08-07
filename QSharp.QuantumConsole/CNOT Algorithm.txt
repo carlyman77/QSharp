@@ -1,0 +1,113 @@
+﻿Control = 0, Target = 1
+Distance = (1 - 0) = 1;
+(I (x) I (x) I (x) I) (c) (X (x) I (x) I (x) I)
+L: I tensored (n - 1) times
+R: X (x) (I tensored (n - 2) times)
+X position = 1 (index 0), (Target - 1)
+X position = Distance, (Index (Distance - 1))
+
+Control = 0, Target = 2
+Distance = (2 - 0) = 2;
+(I (x) I (x) I (x) I) (c) (I (x) X (x) I (x) I)
+L: I tensored (n - 1) times
+R: I (x) X (x) (I tensored (n - 2) times)
+X position = 2 (index 1), (Target - 1)
+X position = Distance, (Index (Distance - 1))
+
+Control = 0, Target = 3
+Distance = (3 - 0) = 3
+(I (x) I (x) I (x) I (x) I) (c) (I (x) I (x) X (x) I (x) I)
+L: I tensored (n - 1) times
+R: I tensored 2 times (x) X (x) (I tensored (n - 4))
+X position = 3 (index 2), (Target - 1)
+X position = Distance, (Index (Distance - 1))
+
+Control = 1, Target = 2
+Distance = (Target - Control) = (2 - 1) = 1
+((I (x) I (x) I) (c) (X (x) I (x) I)) (c) self
+L: I tensored (n - 2) (c) (X tensored with I (n - 3) times
+R: I tensored (n - 2) (c) (X tensored with I (n - 3) times
+X position = 1, (index 0)
+X position = Distance, (Index (Distance - 1))
+
+Control = 2, Target = 3
+Distance = (Target - Control) = (3 - 2) = 1
+((I (x) I (x) I) (c) (X (x) I (x) I)) (c) self (n times)
+L: I tensored (n - 3) (c) (X tensored with I (n - 4) times
+R: I tensored (n - 3) (c) (X tensored with I (n - 4) times
+X position = 1, (index 0)
+X position = Distance, (Index (Distance - 1))
+
+
+Qubits 3
+Control 1
+Target 0
+
+Match:
+False
+
+Matrix:
+{
+0	{1, 0, 0, 0, 0, 0, 0, 0}
+1	{0, 1, 0, 0, 0, 0, 0, 0}
+2	{0, 0, 0, 0, 0, 0, 1, 0}
+3	{0, 0, 0, 0, 0, 0, 0, 1}
+4	{0, 0, 0, 0, 1, 0, 0, 0}
+5	{0, 0, 0, 0, 0, 1, 0, 0}
+6	{0, 0, 1, 0, 0, 0, 0, 0}
+7	{0, 0, 0, 1, 0, 0, 0, 0}
+}
+
+Output:
+{
+0 % 2 = 0
+0	{1, 0, 0, 0, 0, 0, 0, 0}	R0 => R0
+1	{0, 1, 0, 0, 0, 0, 0, 0}	R1 => R1
+
+2 % 2 = 0
+2	{0, 0, 1, 0, 0, 0, 0, 0}	R2 => R6
+3	{0, 0, 0, 1, 0, 0, 0, 0}	R3 => R7
+
+4 % 2 = 0
+4	{0, 0, 0, 0, 1, 0, 0, 0}	R4 => R4
+5	{0, 0, 0, 0, 0, 1, 0, 0}	R5 => R5
+
+6 % 2 = 0
+6	{0, 0, 0, 0, 0, 0, 1, 0}	R6 => R3
+7	{0, 0, 0, 0, 0, 0, 0, 1}	R7 => R4
+}
+
+(R0 + R1) -> (R0 + R1)
+(R2 + R3) -> (R6 + R7)
+(R4 + R5) -> (R4 + R5)
+(R6 + R7) -> (R2 + R3)
+
+
+Qubits 3
+Control 2
+Target 0
+
+Match:
+False
+
+{1, 0, 0, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 1, 0, 0}
+{0, 0, 1, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 0, 0, 1}
+{0, 0, 0, 0, 1, 0, 0, 0}
+{0, 1, 0, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 0, 1, 0}
+{0, 0, 0, 1, 0, 0, 0, 0}
+
+Matrix:
+{
+{1, 0, 0, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 1, 0, 0}
+{0, 0, 1, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 0, 0, 1}
+{0, 0, 0, 0, 1, 0, 0, 0}
+{0, 1, 0, 0, 0, 0, 0, 0}
+{0, 0, 0, 0, 0, 0, 1, 0}
+{0, 0, 0, 1, 0, 0, 0, 0}
+}
+
