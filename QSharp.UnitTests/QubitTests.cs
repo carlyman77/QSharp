@@ -13,32 +13,6 @@ namespace QSharp.UnitTests
     [TestClass]
     public class QubitTests
     {
-        #region Constructors
-
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
-
         [TestMethod]
         public void CheckQubitLabelsForAlphabet()
         {
@@ -78,12 +52,6 @@ namespace QSharp.UnitTests
 			//	while ((number = --number / 26 - 1) > 0) list.AddFirst(number % 26);
 			//	return new string(list.Select(s => (char)(s + 65)).ToArray());
 		}
-
-		#endregion
-
-		#region Delegates
-
-		#endregion
 	}
 }
 

@@ -13,50 +13,19 @@ namespace QSharp.UnitTests
     [TestClass]
     public class IdentityMatrixTests : GateTests
     {
-        #region Constructors
-
         public IdentityMatrixTests()
         {
-            oIdentityMatrix = new IdentityMatrix();
-            oQubit = new Qubit(Alpha, Beta);
+            _identityMatrix = new IdentityMatrix();
+            _qubit = new Qubit(Alpha, Beta);
         }
 
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        private IdentityMatrix oIdentityMatrix;
-        private Qubit oQubit;
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
+        private IdentityMatrix _identityMatrix;
+        private Qubit _qubit;
 
         [TestMethod]
         public void Identity()
         {
+            //  Empty in here
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }

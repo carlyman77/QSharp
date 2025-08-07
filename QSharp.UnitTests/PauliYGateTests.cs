@@ -1,7 +1,6 @@
 ﻿#region Using References
 
 using System;
-using System.Numerics;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,63 +13,37 @@ namespace QSharp.UnitTests
     [TestClass]
     public class PauliYGateTests : GateTests
     {
-        #region Constructors
-
         public PauliYGateTests()
         {
-            oPauliYGate = new PauliYGate();
+            _pauliYGate = new PauliYGate();
         }
 
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        private PauliYGate oPauliYGate;
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
+        private readonly PauliYGate _pauliYGate;
 
         [TestMethod]
         public void PauliYGate1Qubit()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit() });
 
             //  A   B
             //  0  -i   -Bi
             //  i   0   Ai
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
             //  Y(0)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oB);
-            Assert.AreEqual(oRegister[1], oA);
+            Assert.AreEqual(register[0], b);
+            Assert.AreEqual(register[1], a);
 
-            Assert.AreEqual(oA.Amplitude.Real, 1);
-            Assert.AreEqual(oA.Amplitude.Imaginary, 1);
+            Assert.AreEqual(a.Amplitude.Real, 1);
+            Assert.AreEqual(a.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oB.Amplitude.Real, -1);
-            Assert.AreEqual(oB.Amplitude.Imaginary, 1);
+            Assert.AreEqual(b.Amplitude.Real, -1);
+            Assert.AreEqual(b.Amplitude.Imaginary, 1);
 
             //  Reversible
 
@@ -78,105 +51,105 @@ namespace QSharp.UnitTests
             //  0  -i   A
             //  i   0   B
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oA);
-            Assert.AreEqual(oRegister[1], oB);
+            Assert.AreEqual(register[0], a);
+            Assert.AreEqual(register[1], b);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate2QubitPostion0()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  AC  AD  BC  BD
-            //  0   0  -i   0   -BCi
-            //  0   0   0  -i   -BDi
-            //  i   0   0   0   ACi
-            //  0   i   0   0   ADi
+            //  0   0  -I   0   -BCi
+            //  0   0   0  -I   -BDi
+            //  I   0   0   0   ACi
+            //  0   I   0   0   ADi
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  X(0)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oBC);
-            Assert.AreEqual(oRegister[1], oBD);
-            Assert.AreEqual(oRegister[2], oAC);
-            Assert.AreEqual(oRegister[3], oAD);
+            Assert.AreEqual(register[0], bc);
+            Assert.AreEqual(register[1], bd);
+            Assert.AreEqual(register[2], ac);
+            Assert.AreEqual(register[3], ad);
 
-            Assert.AreEqual(oAC.Amplitude.Real, 1);
-            Assert.AreEqual(oAC.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ac.Amplitude.Real, 1);
+            Assert.AreEqual(ac.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oAD.Amplitude.Real, 1);
-            Assert.AreEqual(oAD.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ad.Amplitude.Real, 1);
+            Assert.AreEqual(ad.Amplitude.Imaginary, 1);
             
-            Assert.AreEqual(oBC.Amplitude.Real, -1);
-            Assert.AreEqual(oBC.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bc.Amplitude.Real, -1);
+            Assert.AreEqual(bc.Amplitude.Imaginary, 1);
             
-            Assert.AreEqual(oBD.Amplitude.Real, -1);
-            Assert.AreEqual(oBD.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bd.Amplitude.Real, -1);
+            Assert.AreEqual(bd.Amplitude.Imaginary, 1);
 
             //  Reversible
 
             //  -BCi -BDi ACi ADi
-            //  0    0   -i   0   AC
-            //  0    0    0  -i   AD
-            //  i    0    0   0   BC
-            //  0    i    0   0   BD
+            //  0    0   -I   0   AC
+            //  0    0    0  -I   AD
+            //  I    0    0   0   BC
+            //  0    I    0   0   BD
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oAC);
-            Assert.AreEqual(oRegister[1], oAD);
-            Assert.AreEqual(oRegister[2], oBC);
-            Assert.AreEqual(oRegister[3], oBD);
+            Assert.AreEqual(register[0], ac);
+            Assert.AreEqual(register[1], ad);
+            Assert.AreEqual(register[2], bc);
+            Assert.AreEqual(register[3], bd);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate2QubitPostion1()
         {
-            int iPosition = 1;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 1;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  AC  AD  BC  BD
-            //  0  -i   0   0   -ADi
-            //  i   0   0   0   ACi
-            //  0   0   0  -i   -BDi
-            //  0   0   i   0   BCi
+            //  0  -I   0   0   -ADi
+            //  I   0   0   0   ACi
+            //  0   0   0  -I   -BDi
+            //  0   0   I   0   BCi
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  Y(1)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oAD);
-            Assert.AreEqual(oRegister[1], oAC);
-            Assert.AreEqual(oRegister[2], oBD);
-            Assert.AreEqual(oRegister[3], oBC);
+            Assert.AreEqual(register[0], ad);
+            Assert.AreEqual(register[1], ac);
+            Assert.AreEqual(register[2], bd);
+            Assert.AreEqual(register[3], bc);
 
-            Assert.AreEqual(oAC.Amplitude.Real, 1);
-            Assert.AreEqual(oAC.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ac.Amplitude.Real, 1);
+            Assert.AreEqual(ac.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oAD.Amplitude.Real, -1);
-            Assert.AreEqual(oAD.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ad.Amplitude.Real, -1);
+            Assert.AreEqual(ad.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBC.Amplitude.Real, 1);
-            Assert.AreEqual(oBC.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bc.Amplitude.Real, 1);
+            Assert.AreEqual(bc.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBD.Amplitude.Real, -1);
-            Assert.AreEqual(oBD.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bd.Amplitude.Real, -1);
+            Assert.AreEqual(bd.Amplitude.Imaginary, 1);
 
             //  Reversible
 
@@ -186,76 +159,76 @@ namespace QSharp.UnitTests
             //  0   0   0   1   BC
             //  0   0   1   0   BD
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oAC);
-            Assert.AreEqual(oRegister[1], oAD);
-            Assert.AreEqual(oRegister[2], oBC);
-            Assert.AreEqual(oRegister[3], oBD);
+            Assert.AreEqual(register[0], ac);
+            Assert.AreEqual(register[1], ad);
+            Assert.AreEqual(register[2], bc);
+            Assert.AreEqual(register[3], bd);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate3QubitPostion0()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  ACE ACF ADE ADF BCE BCF BDE BDF
             //  0   0   0   0  -1   0   0   0   -BCEi
-            //  0   0   0   0   0  -i   0   0   -BCFi
-            //  0   0   0   0   0   0  -i   0   -BDEi
-            //  0   0   0   0   0   0   0  -i   -BDFi
-            //  i   0   0   0   0   0   0   0   ACEi
-            //  0   i   0   0   0   0   0   0   ACFi
-            //  0   0   i   0   0   0   0   0   ADEi
-            //  0   0   0   i   0   0   0   0   ADFi
+            //  0   0   0   0   0  -I   0   0   -BCFi
+            //  0   0   0   0   0   0  -I   0   -BDEi
+            //  0   0   0   0   0   0   0  -I   -BDFi
+            //  I   0   0   0   0   0   0   0   ACEi
+            //  0   I   0   0   0   0   0   0   ACFi
+            //  0   0   I   0   0   0   0   0   ADEi
+            //  0   0   0   I   0   0   0   0   ADFi
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  Y(0)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oBCE);
-            Assert.AreEqual(oRegister[1], oBCF);
-            Assert.AreEqual(oRegister[2], oBDE);
-            Assert.AreEqual(oRegister[3], oBDF);
-            Assert.AreEqual(oRegister[4], oACE);
-            Assert.AreEqual(oRegister[5], oACF);
-            Assert.AreEqual(oRegister[6], oADE);
-            Assert.AreEqual(oRegister[7], oADF);
+            Assert.AreEqual(register[0], bce);
+            Assert.AreEqual(register[1], bcf);
+            Assert.AreEqual(register[2], bde);
+            Assert.AreEqual(register[3], bdf);
+            Assert.AreEqual(register[4], ace);
+            Assert.AreEqual(register[5], acf);
+            Assert.AreEqual(register[6], ade);
+            Assert.AreEqual(register[7], adf);
 
-            Assert.AreEqual(oACE.Amplitude.Real, 1);
-            Assert.AreEqual(oACE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ace.Amplitude.Real, 1);
+            Assert.AreEqual(ace.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACF.Amplitude.Real, 1);
-            Assert.AreEqual(oACF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acf.Amplitude.Real, 1);
+            Assert.AreEqual(acf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADE.Amplitude.Real, 1);
-            Assert.AreEqual(oADE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ade.Amplitude.Real, 1);
+            Assert.AreEqual(ade.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADF.Amplitude.Real, 1);
-            Assert.AreEqual(oADF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adf.Amplitude.Real, 1);
+            Assert.AreEqual(adf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCE.Amplitude.Real, -1);
-            Assert.AreEqual(oBCE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bce.Amplitude.Real, -1);
+            Assert.AreEqual(bce.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCF.Amplitude.Real, -1);
-            Assert.AreEqual(oBCF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcf.Amplitude.Real, -1);
+            Assert.AreEqual(bcf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDE.Amplitude.Real, -1);
-            Assert.AreEqual(oBDE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bde.Amplitude.Real, -1);
+            Assert.AreEqual(bde.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDF.Amplitude.Real, -1);
-            Assert.AreEqual(oBDF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdf.Amplitude.Real, -1);
+            Assert.AreEqual(bdf.Amplitude.Imaginary, 1);
 
             //  Reversible
 
@@ -269,80 +242,80 @@ namespace QSharp.UnitTests
             //  0   0   1   0   0   0   0   0   BDE
             //  0   0   0   1   0   0   0   0   BDF
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate3QubitPostion1()
         {
-            int iPosition = 1;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 1;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  ACE ACF ADE ADF BCE BCF BDE BDF
-            //  0   0  -i   0   0   0   0   0   -ADEi
-            //  0   0   0  -i   0   0   0   0   -ADFi
-            //  i   0   0   0   0   0   0   0   ACEi
-            //  0   i   0   0   0   0   0   0   ACFi
-            //  0   0   0   0   0   0  -i   0   -BDEi
-            //  0   0   0   0   0   0   0  -i   -BDFi
-            //  0   0   0   0   i   0   0   0   BCEi
-            //  0   0   0   0   0   i   0   0   BCFi
+            //  0   0  -I   0   0   0   0   0   -ADEi
+            //  0   0   0  -I   0   0   0   0   -ADFi
+            //  I   0   0   0   0   0   0   0   ACEi
+            //  0   I   0   0   0   0   0   0   ACFi
+            //  0   0   0   0   0   0  -I   0   -BDEi
+            //  0   0   0   0   0   0   0  -I   -BDFi
+            //  0   0   0   0   I   0   0   0   BCEi
+            //  0   0   0   0   0   I   0   0   BCFi
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  Y(1)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oADE);
-            Assert.AreEqual(oRegister[1], oADF);
-            Assert.AreEqual(oRegister[2], oACE);
-            Assert.AreEqual(oRegister[3], oACF);
-            Assert.AreEqual(oRegister[4], oBDE);
-            Assert.AreEqual(oRegister[5], oBDF);
-            Assert.AreEqual(oRegister[6], oBCE);
-            Assert.AreEqual(oRegister[7], oBCF);
+            Assert.AreEqual(register[0], ade);
+            Assert.AreEqual(register[1], adf);
+            Assert.AreEqual(register[2], ace);
+            Assert.AreEqual(register[3], acf);
+            Assert.AreEqual(register[4], bde);
+            Assert.AreEqual(register[5], bdf);
+            Assert.AreEqual(register[6], bce);
+            Assert.AreEqual(register[7], bcf);
 
-            Assert.AreEqual(oACE.Amplitude.Real, 1);
-            Assert.AreEqual(oACE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ace.Amplitude.Real, 1);
+            Assert.AreEqual(ace.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACF.Amplitude.Real, 1);
-            Assert.AreEqual(oACF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acf.Amplitude.Real, 1);
+            Assert.AreEqual(acf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADE.Amplitude.Real, -1);
-            Assert.AreEqual(oADE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ade.Amplitude.Real, -1);
+            Assert.AreEqual(ade.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADF.Amplitude.Real, -1);
-            Assert.AreEqual(oADF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adf.Amplitude.Real, -1);
+            Assert.AreEqual(adf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCE.Amplitude.Real, 1);
-            Assert.AreEqual(oBCE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bce.Amplitude.Real, 1);
+            Assert.AreEqual(bce.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCF.Amplitude.Real, 1);
-            Assert.AreEqual(oBCF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcf.Amplitude.Real, 1);
+            Assert.AreEqual(bcf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDE.Amplitude.Real, -1);
-            Assert.AreEqual(oBDE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bde.Amplitude.Real, -1);
+            Assert.AreEqual(bde.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDF.Amplitude.Real, -1);
-            Assert.AreEqual(oBDF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdf.Amplitude.Real, -1);
+            Assert.AreEqual(bdf.Amplitude.Imaginary, 1);
 
             //  Reversible
 
@@ -356,526 +329,526 @@ namespace QSharp.UnitTests
             //  0   0   0   0   1   0   0   0   BDE
             //  0   0   0   0   0   1   0   0   BDF
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate3QubitPostion2()
         {
-            int iPosition = 2;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 2;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  ACE ACF ADE ADF BCE BCF BDE BDF
-            //  0  -i   0   0   0   0   0   0   -ACFi
-            //  i   0   0   0   0   0   0   0   ACEi
-            //  0   0   0  -i   0   0   0   0   -ADFi
-            //  0   0   i   0   0   0   0   0   ADEi
-            //  0   0   0   0   0  -i   0   0   -BCFi
-            //  0   0   0   0   i   0   0   0   BCEi
-            //  0   0   0   0   0   0   0  -i   -BDFi
-            //  0   0   0   0   0   0   i   0   BDEi
+            //  0  -I   0   0   0   0   0   0   -ACFi
+            //  I   0   0   0   0   0   0   0   ACEi
+            //  0   0   0  -I   0   0   0   0   -ADFi
+            //  0   0   I   0   0   0   0   0   ADEi
+            //  0   0   0   0   0  -I   0   0   -BCFi
+            //  0   0   0   0   I   0   0   0   BCEi
+            //  0   0   0   0   0   0   0  -I   -BDFi
+            //  0   0   0   0   0   0   I   0   BDEi
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  X(2)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACF);
-            Assert.AreEqual(oRegister[1], oACE);
-            Assert.AreEqual(oRegister[2], oADF);
-            Assert.AreEqual(oRegister[3], oADE);
-            Assert.AreEqual(oRegister[4], oBCF);
-            Assert.AreEqual(oRegister[5], oBCE);
-            Assert.AreEqual(oRegister[6], oBDF);
-            Assert.AreEqual(oRegister[7], oBDE);
+            Assert.AreEqual(register[0], acf);
+            Assert.AreEqual(register[1], ace);
+            Assert.AreEqual(register[2], adf);
+            Assert.AreEqual(register[3], ade);
+            Assert.AreEqual(register[4], bcf);
+            Assert.AreEqual(register[5], bce);
+            Assert.AreEqual(register[6], bdf);
+            Assert.AreEqual(register[7], bde);
 
-            Assert.AreEqual(oACE.Amplitude.Real, 1);
-            Assert.AreEqual(oACE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ace.Amplitude.Real, 1);
+            Assert.AreEqual(ace.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACF.Amplitude.Real, -1);
-            Assert.AreEqual(oACF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acf.Amplitude.Real, -1);
+            Assert.AreEqual(acf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADE.Amplitude.Real, 1);
-            Assert.AreEqual(oADE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(ade.Amplitude.Real, 1);
+            Assert.AreEqual(ade.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADF.Amplitude.Real, -1);
-            Assert.AreEqual(oADF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adf.Amplitude.Real, -1);
+            Assert.AreEqual(adf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCE.Amplitude.Real, 1);
-            Assert.AreEqual(oBCE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bce.Amplitude.Real, 1);
+            Assert.AreEqual(bce.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCF.Amplitude.Real, -1);
-            Assert.AreEqual(oBCF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcf.Amplitude.Real, -1);
+            Assert.AreEqual(bcf.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDE.Amplitude.Real, 1);
-            Assert.AreEqual(oBDE.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bde.Amplitude.Real, 1);
+            Assert.AreEqual(bde.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDF.Amplitude.Real, -1);
-            Assert.AreEqual(oBDF.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdf.Amplitude.Real, -1);
+            Assert.AreEqual(bdf.Amplitude.Imaginary, 1);
 
             //  Reversible
 
             //  -ACFi ACEi -ADFi  ADEi -BCFi  BCEi -BDFi  BDEi
-            //  0    -i     0     0     0     0     0     0   ACE
-            //  i     0     0     0     0     0     0     0   ACF
-            //  0     0     0    -i     0     0     0     0   ADE
-            //  0     0     i     0     0     0     0     0   ADF
-            //  0     0     0     0     0    -i     0     0   BCE
-            //  0     0     0     0     i     0     0     0   BCF
-            //  0     0     0     0     0     0     0    -i   BDE
-            //  0     0     0     0     0     0     i     0   BDF
+            //  0    -I     0     0     0     0     0     0   ACE
+            //  I     0     0     0     0     0     0     0   ACF
+            //  0     0     0    -I     0     0     0     0   ADE
+            //  0     0     I     0     0     0     0     0   ADF
+            //  0     0     0     0     0    -I     0     0   BCE
+            //  0     0     0     0     I     0     0     0   BCF
+            //  0     0     0     0     0     0     0    -I   BDE
+            //  0     0     0     0     0     0     I     0   BDF
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate4QubitPostion0()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
-            //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
+            //  aceg + aceh + acfg + acfh + adeg + adeh + adfg + adfh + bceg + bceh + bcfg + bcfh + bdeg + bdeh + bdfg + bdfh
 
             //  ACEG ACEH ACFG ACFH ADEG ADEH ADFG ADFH BCEG BCEH BCFG BCFH BDEG BDEH BDFG BDFH
-            //  0    0    0    0    0    0    0    0   -i    0    0    0    0    0    0    0    -BCEGi
-            //  0    0    0    0    0    0    0    0    0   -i    0    0    0    0    0    0    -BCEHi
-            //  0    0    0    0    0    0    0    0    0    0   -i    0    0    0    0    0    -BCFGi
-            //  0    0    0    0    0    0    0    0    0    0    0   -i    0    0    0    0    -BCFHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0   -i    0    0    0    -BDEGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0   -i    0    0    -BDEHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    0    -BDFGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    -BDFHi
-            //  i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
-            //  0    i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEHi
-            //  0    0    i    0    0    0    0    0    0    0    0    0    0    0    0    0    ACFGi
-            //  0    0    0    i    0    0    0    0    0    0    0    0    0    0    0    0    ACFHi
-            //  0    0    0    0    i    0    0    0    0    0    0    0    0    0    0    0    ADEGi
-            //  0    0    0    0    0    i    0    0    0    0    0    0    0    0    0    0    ADEHi
-            //  0    0    0    0    0    0    i    0    0    0    0    0    0    0    0    0    ADFGi
-            //  0    0    0    0    0    0    0    i    0    0    0    0    0    0    0    0    ADFHi
+            //  0    0    0    0    0    0    0    0   -I    0    0    0    0    0    0    0    -BCEGi
+            //  0    0    0    0    0    0    0    0    0   -I    0    0    0    0    0    0    -BCEHi
+            //  0    0    0    0    0    0    0    0    0    0   -I    0    0    0    0    0    -BCFGi
+            //  0    0    0    0    0    0    0    0    0    0    0   -I    0    0    0    0    -BCFHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0   -I    0    0    0    -BDEGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0   -I    0    0    -BDEHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    0    -BDFGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    -BDFHi
+            //  I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
+            //  0    I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEHi
+            //  0    0    I    0    0    0    0    0    0    0    0    0    0    0    0    0    ACFGi
+            //  0    0    0    I    0    0    0    0    0    0    0    0    0    0    0    0    ACFHi
+            //  0    0    0    0    I    0    0    0    0    0    0    0    0    0    0    0    ADEGi
+            //  0    0    0    0    0    I    0    0    0    0    0    0    0    0    0    0    ADEHi
+            //  0    0    0    0    0    0    I    0    0    0    0    0    0    0    0    0    ADFGi
+            //  0    0    0    0    0    0    0    I    0    0    0    0    0    0    0    0    ADFHi
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(0)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oBCEG);
-            Assert.AreEqual(oRegister[1], oBCEH);
-            Assert.AreEqual(oRegister[2], oBCFG);
-            Assert.AreEqual(oRegister[3], oBCFH);
-            Assert.AreEqual(oRegister[4], oBDEG);
-            Assert.AreEqual(oRegister[5], oBDEH);
-            Assert.AreEqual(oRegister[6], oBDFG);
-            Assert.AreEqual(oRegister[7], oBDFH);
-            Assert.AreEqual(oRegister[8], oACEG);
-            Assert.AreEqual(oRegister[9], oACEH);
-            Assert.AreEqual(oRegister[10], oACFG);
-            Assert.AreEqual(oRegister[11], oACFH);
-            Assert.AreEqual(oRegister[12], oADEG);
-            Assert.AreEqual(oRegister[13], oADEH);
-            Assert.AreEqual(oRegister[14], oADFG);
-            Assert.AreEqual(oRegister[15], oADFH);
+            Assert.AreEqual(register[0], bceg);
+            Assert.AreEqual(register[1], bceh);
+            Assert.AreEqual(register[2], bcfg);
+            Assert.AreEqual(register[3], bcfh);
+            Assert.AreEqual(register[4], bdeg);
+            Assert.AreEqual(register[5], bdeh);
+            Assert.AreEqual(register[6], bdfg);
+            Assert.AreEqual(register[7], bdfh);
+            Assert.AreEqual(register[8], aceg);
+            Assert.AreEqual(register[9], aceh);
+            Assert.AreEqual(register[10], acfg);
+            Assert.AreEqual(register[11], acfh);
+            Assert.AreEqual(register[12], adeg);
+            Assert.AreEqual(register[13], adeh);
+            Assert.AreEqual(register[14], adfg);
+            Assert.AreEqual(register[15], adfh);
 
-            Assert.AreEqual(oACEG.Amplitude.Real, 1);
-            Assert.AreEqual(oACEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceg.Amplitude.Real, 1);
+            Assert.AreEqual(aceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACEH.Amplitude.Real, 1);
-            Assert.AreEqual(oACEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceh.Amplitude.Real, 1);
+            Assert.AreEqual(aceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFG.Amplitude.Real, 1);
-            Assert.AreEqual(oACFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfg.Amplitude.Real, 1);
+            Assert.AreEqual(acfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFH.Amplitude.Real, 1);
-            Assert.AreEqual(oACFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfh.Amplitude.Real, 1);
+            Assert.AreEqual(acfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEG.Amplitude.Real, 1);
-            Assert.AreEqual(oADEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeg.Amplitude.Real, 1);
+            Assert.AreEqual(adeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEH.Amplitude.Real, 1);
-            Assert.AreEqual(oADEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeh.Amplitude.Real, 1);
+            Assert.AreEqual(adeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFG.Amplitude.Real, 1);
-            Assert.AreEqual(oADFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfg.Amplitude.Real, 1);
+            Assert.AreEqual(adfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFH.Amplitude.Real, 1);
-            Assert.AreEqual(oADFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfh.Amplitude.Real, 1);
+            Assert.AreEqual(adfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEG.Amplitude.Real, -1);
-            Assert.AreEqual(oBCEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceg.Amplitude.Real, -1);
+            Assert.AreEqual(bceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEH.Amplitude.Real, -1);
-            Assert.AreEqual(oBCEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceh.Amplitude.Real, -1);
+            Assert.AreEqual(bceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFG.Amplitude.Real, -1);
-            Assert.AreEqual(oBCFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfg.Amplitude.Real, -1);
+            Assert.AreEqual(bcfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBCFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfh.Amplitude.Real, -1);
+            Assert.AreEqual(bcfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEG.Amplitude.Real, -1);
-            Assert.AreEqual(oBDEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeg.Amplitude.Real, -1);
+            Assert.AreEqual(bdeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeh.Amplitude.Real, -1);
+            Assert.AreEqual(bdeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFG.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfg.Amplitude.Real, -1);
+            Assert.AreEqual(bdfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfh.Amplitude.Real, -1);
+            Assert.AreEqual(bdfh.Amplitude.Imaginary, 1);
 
             //  Reversible
 
             //  -BCEGi -BCEHi -BCFGi -BCFHi -BDEGi -BDEHi -BDFGi -BDFGi ACEGi  ACEHi  ACFGi  ACFHi  ADEGi  ADEHi  ADFGi  ADFHi
-            //   0      0      0      0      0      0      0      0    -i      0      0      0      0      0      0      0     ACEG
-            //   0      0      0      0      0      0      0      0     0     -i      0      0      0      0      0      0     ACEH
-            //   0      0      0      0      0      0      0      0     0      0     -i      0      0      0      0      0     ACFG
-            //   0      0      0      0      0      0      0      0     0      0      0     -i      0      0      0      0     ACFH
-            //   0      0      0      0      0      0      0      0     0      0      0      0     -i      0      0      0     ADEG
-            //   0      0      0      0      0      0      0      0     0      0      0      0      0     -i      0      0     ADEH
-            //   0      0      0      0      0      0      0      0     0      0      0      0      0      0     -i      0     ADFG
-            //   0      0      0      0      0      0      0      0     0      0      0      0      0      0      0     -i     ADFH
-            //   i      0      0      0      0      0      0      0     0      0      0      0      0      0      0      0     BCEG
-            //   0      i      0      0      0      0      0      0     0      0      0      0      0      0      0      0     BCEH
-            //   0      0      i      0      0      0      0      0     0      0      0      0      0      0      0      0     BCFG
-            //   0      0      0      i      0      0      0      0     0      0      0      0      0      0      0      0     BCFH
-            //   0      0      0      0      i      0      0      0     0      0      0      0      0      0      0      0     BDEG
-            //   0      0      0      0      0      i      0      0     0      0      0      0      0      0      0      0     BDEH
-            //   0      0      0      0      0      0      i      0     0      0      0      0      0      0      0      0     BDFG
-            //   0      0      0      0      0      0      0      i     0      0      0      0      0      0      0      0     BDFH
+            //   0      0      0      0      0      0      0      0    -I      0      0      0      0      0      0      0     ACEG
+            //   0      0      0      0      0      0      0      0     0     -I      0      0      0      0      0      0     ACEH
+            //   0      0      0      0      0      0      0      0     0      0     -I      0      0      0      0      0     ACFG
+            //   0      0      0      0      0      0      0      0     0      0      0     -I      0      0      0      0     ACFH
+            //   0      0      0      0      0      0      0      0     0      0      0      0     -I      0      0      0     ADEG
+            //   0      0      0      0      0      0      0      0     0      0      0      0      0     -I      0      0     ADEH
+            //   0      0      0      0      0      0      0      0     0      0      0      0      0      0     -I      0     ADFG
+            //   0      0      0      0      0      0      0      0     0      0      0      0      0      0      0     -I     ADFH
+            //   I      0      0      0      0      0      0      0     0      0      0      0      0      0      0      0     BCEG
+            //   0      I      0      0      0      0      0      0     0      0      0      0      0      0      0      0     BCEH
+            //   0      0      I      0      0      0      0      0     0      0      0      0      0      0      0      0     BCFG
+            //   0      0      0      I      0      0      0      0     0      0      0      0      0      0      0      0     BCFH
+            //   0      0      0      0      I      0      0      0     0      0      0      0      0      0      0      0     BDEG
+            //   0      0      0      0      0      I      0      0     0      0      0      0      0      0      0      0     BDEH
+            //   0      0      0      0      0      0      I      0     0      0      0      0      0      0      0      0     BDFG
+            //   0      0      0      0      0      0      0      I     0      0      0      0      0      0      0      0     BDFH
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate4QubitPostion1()
         {
-            int iPosition = 1;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 1;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
-            //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
+            //  aceg + aceh + acfg + acfh + adeg + adeh + adfg + adfh + bceg + bceh + bcfg + bcfh + bdeg + bdeh + bdfg + bdfh
 
             //  ACEG ACEH ACFG ACFH ADEG ADEH ADFG ADFH BCEG BCEH BCFG BCFH BDEG BDEH BDFG BDFH
-            //  0    0    0    0   -i    0    0    0    0    0    0    0    0    0    0    0    -ADEGi
-            //  0    0    0    0    0   -i    0    0    0    0    0    0    0    0    0    0    -ADEHi
-            //  0    0    0    0    0    0   -i    0    0    0    0    0    0    0    0    0    -ADFGi
-            //  0    0    0    0    0    0    0   -i    0    0    0    0    0    0    0    0    -ADFHi
-            //  i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
-            //  0    i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEHi
-            //  0    0    i    0    0    0    0    0    0    0    0    0    0    0    0    0    ACFGi
-            //  0    0    0    i    0    0    0    0    0    0    0    0    0    0    0    0    ACFHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0   -i    0    0    0    -BDEGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0   -i    0    0    -BDEHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    0    -BDFGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    -BDFHi
-            //  0    0    0    0    0    0    0    0    i    0    0    0    0    0    0    0    BCEGi
-            //  0    0    0    0    0    0    0    0    0    i    0    0    0    0    0    0    BCEHi
-            //  0    0    0    0    0    0    0    0    0    0    i    0    0    0    0    0    BCFGi
-            //  0    0    0    0    0    0    0    0    0    0    0    i    0    0    0    0    BCFHi
+            //  0    0    0    0   -I    0    0    0    0    0    0    0    0    0    0    0    -ADEGi
+            //  0    0    0    0    0   -I    0    0    0    0    0    0    0    0    0    0    -ADEHi
+            //  0    0    0    0    0    0   -I    0    0    0    0    0    0    0    0    0    -ADFGi
+            //  0    0    0    0    0    0    0   -I    0    0    0    0    0    0    0    0    -ADFHi
+            //  I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
+            //  0    I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEHi
+            //  0    0    I    0    0    0    0    0    0    0    0    0    0    0    0    0    ACFGi
+            //  0    0    0    I    0    0    0    0    0    0    0    0    0    0    0    0    ACFHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0   -I    0    0    0    -BDEGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0   -I    0    0    -BDEHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    0    -BDFGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    -BDFHi
+            //  0    0    0    0    0    0    0    0    I    0    0    0    0    0    0    0    BCEGi
+            //  0    0    0    0    0    0    0    0    0    I    0    0    0    0    0    0    BCEHi
+            //  0    0    0    0    0    0    0    0    0    0    I    0    0    0    0    0    BCFGi
+            //  0    0    0    0    0    0    0    0    0    0    0    I    0    0    0    0    BCFHi
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(1)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oADEG);
-            Assert.AreEqual(oRegister[1], oADEH);
-            Assert.AreEqual(oRegister[2], oADFG);
-            Assert.AreEqual(oRegister[3], oADFH);
-            Assert.AreEqual(oRegister[4], oACEG);
-            Assert.AreEqual(oRegister[5], oACEH);
-            Assert.AreEqual(oRegister[6], oACFG);
-            Assert.AreEqual(oRegister[7], oACFH);
-            Assert.AreEqual(oRegister[8], oBDEG);
-            Assert.AreEqual(oRegister[9], oBDEH);
-            Assert.AreEqual(oRegister[10], oBDFG);
-            Assert.AreEqual(oRegister[11], oBDFH);
-            Assert.AreEqual(oRegister[12], oBCEG);
-            Assert.AreEqual(oRegister[13], oBCEH);
-            Assert.AreEqual(oRegister[14], oBCFG);
-            Assert.AreEqual(oRegister[15], oBCFH);
+            Assert.AreEqual(register[0], adeg);
+            Assert.AreEqual(register[1], adeh);
+            Assert.AreEqual(register[2], adfg);
+            Assert.AreEqual(register[3], adfh);
+            Assert.AreEqual(register[4], aceg);
+            Assert.AreEqual(register[5], aceh);
+            Assert.AreEqual(register[6], acfg);
+            Assert.AreEqual(register[7], acfh);
+            Assert.AreEqual(register[8], bdeg);
+            Assert.AreEqual(register[9], bdeh);
+            Assert.AreEqual(register[10], bdfg);
+            Assert.AreEqual(register[11], bdfh);
+            Assert.AreEqual(register[12], bceg);
+            Assert.AreEqual(register[13], bceh);
+            Assert.AreEqual(register[14], bcfg);
+            Assert.AreEqual(register[15], bcfh);
 
-            Assert.AreEqual(oACEG.Amplitude.Real, 1);
-            Assert.AreEqual(oACEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceg.Amplitude.Real, 1);
+            Assert.AreEqual(aceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACEH.Amplitude.Real, 1);
-            Assert.AreEqual(oACEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceh.Amplitude.Real, 1);
+            Assert.AreEqual(aceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFG.Amplitude.Real, 1);
-            Assert.AreEqual(oACFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfg.Amplitude.Real, 1);
+            Assert.AreEqual(acfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFH.Amplitude.Real, 1);
-            Assert.AreEqual(oACFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfh.Amplitude.Real, 1);
+            Assert.AreEqual(acfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEG.Amplitude.Real, -1);
-            Assert.AreEqual(oADEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeg.Amplitude.Real, -1);
+            Assert.AreEqual(adeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEH.Amplitude.Real, -1);
-            Assert.AreEqual(oADEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeh.Amplitude.Real, -1);
+            Assert.AreEqual(adeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFG.Amplitude.Real, -1);
-            Assert.AreEqual(oADFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfg.Amplitude.Real, -1);
+            Assert.AreEqual(adfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFH.Amplitude.Real, -1);
-            Assert.AreEqual(oADFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfh.Amplitude.Real, -1);
+            Assert.AreEqual(adfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEG.Amplitude.Real, 1);
-            Assert.AreEqual(oBCEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceg.Amplitude.Real, 1);
+            Assert.AreEqual(bceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEH.Amplitude.Real, 1);
-            Assert.AreEqual(oBCEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceh.Amplitude.Real, 1);
+            Assert.AreEqual(bceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFG.Amplitude.Real, 1);
-            Assert.AreEqual(oBCFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfg.Amplitude.Real, 1);
+            Assert.AreEqual(bcfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFH.Amplitude.Real, 1);
-            Assert.AreEqual(oBCFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfh.Amplitude.Real, 1);
+            Assert.AreEqual(bcfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEG.Amplitude.Real, -1);
-            Assert.AreEqual(oBDEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeg.Amplitude.Real, -1);
+            Assert.AreEqual(bdeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeh.Amplitude.Real, -1);
+            Assert.AreEqual(bdeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFG.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfg.Amplitude.Real, -1);
+            Assert.AreEqual(bdfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfh.Amplitude.Real, -1);
+            Assert.AreEqual(bdfh.Amplitude.Imaginary, 1);
 
             //  Reversible
 
             //  -ADEGi -ADEHi -ADFGi -ADFHi  ACEGi  ACEHi  ACFGi  ACFHi -BDEGi -BDEHi -BDFGi -BDFHi  BCEGi  BCEHi  BCFGi  BCFHi
-            //   0      0      0      0     -i      0      0      0      0      0      0      0      0      0      0      0     -ADEGi
-            //   0      0      0      0      0     -i      0      0      0      0      0      0      0      0      0      0     -ADEHi
-            //   0      0      0      0      0      0     -i      0      0      0      0      0      0      0      0      0     -ADFGi
-            //   0      0      0      0      0      0      0     -i      0      0      0      0      0      0      0      0     -ADFHi
-            //   i      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEGi
-            //   0      i      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEHi
-            //   0      0      i      0      0      0      0      0      0      0      0      0      0      0      0      0     ACFGi
-            //   0      0      0      i      0      0      0      0      0      0      0      0      0      0      0      0     ACFHi
-            //   0      0      0      0      0      0      0      0      0      0      0      0     -i      0      0      0     -BDEGi
-            //   0      0      0      0      0      0      0      0      0      0      0      0      0     -i      0      0     -BDEHi
-            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0     -i      0     -BDFGi
-            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     -i     -BDFHi
-            //   0      0      0      0      0      0      0      0      i      0      0      0      0      0      0      0     BCEGi
-            //   0      0      0      0      0      0      0      0      0      i      0      0      0      0      0      0     BCEHi
-            //   0      0      0      0      0      0      0      0      0      0      i      0      0      0      0      0     BCFGi
-            //   0      0      0      0      0      0      0      0      0      0      0      i      0      0      0      0     BCFHi
+            //   0      0      0      0     -I      0      0      0      0      0      0      0      0      0      0      0     -ADEGi
+            //   0      0      0      0      0     -I      0      0      0      0      0      0      0      0      0      0     -ADEHi
+            //   0      0      0      0      0      0     -I      0      0      0      0      0      0      0      0      0     -ADFGi
+            //   0      0      0      0      0      0      0     -I      0      0      0      0      0      0      0      0     -ADFHi
+            //   I      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEGi
+            //   0      I      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEHi
+            //   0      0      I      0      0      0      0      0      0      0      0      0      0      0      0      0     ACFGi
+            //   0      0      0      I      0      0      0      0      0      0      0      0      0      0      0      0     ACFHi
+            //   0      0      0      0      0      0      0      0      0      0      0      0     -I      0      0      0     -BDEGi
+            //   0      0      0      0      0      0      0      0      0      0      0      0      0     -I      0      0     -BDEHi
+            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0     -I      0     -BDFGi
+            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     -I     -BDFHi
+            //   0      0      0      0      0      0      0      0      I      0      0      0      0      0      0      0     BCEGi
+            //   0      0      0      0      0      0      0      0      0      I      0      0      0      0      0      0     BCEHi
+            //   0      0      0      0      0      0      0      0      0      0      I      0      0      0      0      0     BCFGi
+            //   0      0      0      0      0      0      0      0      0      0      0      I      0      0      0      0     BCFHi
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate4QubitPostion2()
         {
-            int iPosition = 2;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 2;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
-            //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
+            //  aceg + aceh + acfg + acfh + adeg + adeh + adfg + adfh + bceg + bceh + bcfg + bcfh + bdeg + bdeh + bdfg + bdfh
 
             //  ACEG ACEH ACFG ACFH ADEG ADEH ADFG ADFH BCEG BCEH BCFG BCFH BDEG BDEH BDFG BDFH
-            //  0    0   -i    0    0    0    0    0    0    0    0    0    0    0    0    0    -ACFGi
-            //  0    0    0   -i    0    0    0    0    0    0    0    0    0    0    0    0    -ACFHi
-            //  i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
-            //  0    i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEHi
-            //  0    0    0    0    0    0   -i    0    0    0    0    0    0    0    0    0    -ADFGi
-            //  0    0    0    0    0    0    0   -i    0    0    0    0    0    0    0    0    -ADFHi
-            //  0    0    0    0    i    0    0    0    0    0    0    0    0    0    0    0    ADEGi
-            //  0    0    0    0    0    i    0    0    0    0    0    0    0    0    0    0    ADEHi
-            //  0    0    0    0    0    0    0    0    0    0   -i    0    0    0    0    0    -BCFGi
-            //  0    0    0    0    0    0    0    0    0    0    0   -i    0    0    0    0    -BCFHi
-            //  0    0    0    0    0    0    0    0    i    0    0    0    0    0    0    0    BCEGi
-            //  0    0    0    0    0    0    0    0    0    i    0    0    0    0    0    0    BCEHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    0    -BDFGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    -BDFHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    i    0    0    0    BDEGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    i    0    0    BDEHi
+            //  0    0   -I    0    0    0    0    0    0    0    0    0    0    0    0    0    -ACFGi
+            //  0    0    0   -I    0    0    0    0    0    0    0    0    0    0    0    0    -ACFHi
+            //  I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
+            //  0    I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEHi
+            //  0    0    0    0    0    0   -I    0    0    0    0    0    0    0    0    0    -ADFGi
+            //  0    0    0    0    0    0    0   -I    0    0    0    0    0    0    0    0    -ADFHi
+            //  0    0    0    0    I    0    0    0    0    0    0    0    0    0    0    0    ADEGi
+            //  0    0    0    0    0    I    0    0    0    0    0    0    0    0    0    0    ADEHi
+            //  0    0    0    0    0    0    0    0    0    0   -I    0    0    0    0    0    -BCFGi
+            //  0    0    0    0    0    0    0    0    0    0    0   -I    0    0    0    0    -BCFHi
+            //  0    0    0    0    0    0    0    0    I    0    0    0    0    0    0    0    BCEGi
+            //  0    0    0    0    0    0    0    0    0    I    0    0    0    0    0    0    BCEHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    0    -BDFGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    -BDFHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    I    0    0    0    BDEGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    I    0    0    BDEHi
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(2)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACFG);
-            Assert.AreEqual(oRegister[1], oACFH);
-            Assert.AreEqual(oRegister[2], oACEG);
-            Assert.AreEqual(oRegister[3], oACEH);
-            Assert.AreEqual(oRegister[4], oADFG);
-            Assert.AreEqual(oRegister[5], oADFH);
-            Assert.AreEqual(oRegister[6], oADEG);
-            Assert.AreEqual(oRegister[7], oADEH);
-            Assert.AreEqual(oRegister[8], oBCFG);
-            Assert.AreEqual(oRegister[9], oBCFH);
-            Assert.AreEqual(oRegister[10], oBCEG);
-            Assert.AreEqual(oRegister[11], oBCEH);
-            Assert.AreEqual(oRegister[12], oBDFG);
-            Assert.AreEqual(oRegister[13], oBDFH);
-            Assert.AreEqual(oRegister[14], oBDEG);
-            Assert.AreEqual(oRegister[15], oBDEH);
+            Assert.AreEqual(register[0], acfg);
+            Assert.AreEqual(register[1], acfh);
+            Assert.AreEqual(register[2], aceg);
+            Assert.AreEqual(register[3], aceh);
+            Assert.AreEqual(register[4], adfg);
+            Assert.AreEqual(register[5], adfh);
+            Assert.AreEqual(register[6], adeg);
+            Assert.AreEqual(register[7], adeh);
+            Assert.AreEqual(register[8], bcfg);
+            Assert.AreEqual(register[9], bcfh);
+            Assert.AreEqual(register[10], bceg);
+            Assert.AreEqual(register[11], bceh);
+            Assert.AreEqual(register[12], bdfg);
+            Assert.AreEqual(register[13], bdfh);
+            Assert.AreEqual(register[14], bdeg);
+            Assert.AreEqual(register[15], bdeh);
 
-            Assert.AreEqual(oACEG.Amplitude.Real, 1);
-            Assert.AreEqual(oACEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceg.Amplitude.Real, 1);
+            Assert.AreEqual(aceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACEH.Amplitude.Real, 1);
-            Assert.AreEqual(oACEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceh.Amplitude.Real, 1);
+            Assert.AreEqual(aceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFG.Amplitude.Real, -1);
-            Assert.AreEqual(oACFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfg.Amplitude.Real, -1);
+            Assert.AreEqual(acfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFH.Amplitude.Real, -1);
-            Assert.AreEqual(oACFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfh.Amplitude.Real, -1);
+            Assert.AreEqual(acfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEG.Amplitude.Real, 1);
-            Assert.AreEqual(oADEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeg.Amplitude.Real, 1);
+            Assert.AreEqual(adeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEH.Amplitude.Real, 1);
-            Assert.AreEqual(oADEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeh.Amplitude.Real, 1);
+            Assert.AreEqual(adeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFG.Amplitude.Real, -1);
-            Assert.AreEqual(oADFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfg.Amplitude.Real, -1);
+            Assert.AreEqual(adfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFH.Amplitude.Real, -1);
-            Assert.AreEqual(oADFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfh.Amplitude.Real, -1);
+            Assert.AreEqual(adfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEG.Amplitude.Real, 1);
-            Assert.AreEqual(oBCEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceg.Amplitude.Real, 1);
+            Assert.AreEqual(bceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEH.Amplitude.Real, 1);
-            Assert.AreEqual(oBCEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceh.Amplitude.Real, 1);
+            Assert.AreEqual(bceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFG.Amplitude.Real, -1);
-            Assert.AreEqual(oBCFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfg.Amplitude.Real, -1);
+            Assert.AreEqual(bcfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBCFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfh.Amplitude.Real, -1);
+            Assert.AreEqual(bcfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEG.Amplitude.Real, 1);
-            Assert.AreEqual(oBDEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeg.Amplitude.Real, 1);
+            Assert.AreEqual(bdeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEH.Amplitude.Real, 1);
-            Assert.AreEqual(oBDEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeh.Amplitude.Real, 1);
+            Assert.AreEqual(bdeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFG.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfg.Amplitude.Real, -1);
+            Assert.AreEqual(bdfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfh.Amplitude.Real, -1);
+            Assert.AreEqual(bdfh.Amplitude.Imaginary, 1);
 
             //  Reversible
 
@@ -897,186 +870,180 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    BDFG
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    BDFH
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliYGate4QubitPostion3()
         {
-            int iPosition = 3;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 3;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
             //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
 
             //  ACEG ACEH ACFG ACFH ADEG ADEH ADFG ADFH BCEG BCEH BCFG BCFH BDEG BDEH BDFG BDFH
-            //  0   -i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    -ACEHi
-            //  i    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
-            //  0    0    0   -i    0    0    0    0    0    0    0    0    0    0    0    0    -ACFHi
-            //  0    0    i    0    0    0    0    0    0    0    0    0    0    0    0    0    ACFGi
-            //  0    0    0    0    0   -i    0    0    0    0    0    0    0    0    0    0    -ADEHi
-            //  0    0    0    0    i    0    0    0    0    0    0    0    0    0    0    0    ADEGi
-            //  0    0    0    0    0    0    0   -i    0    0    0    0    0    0    0    0    -ADFHi
-            //  0    0    0    0    0    0    i    0    0    0    0    0    0    0    0    0    ADFGi
-            //  0    0    0    0    0    0    0    0    0   -i    0    0    0    0    0    0    -BCEHi
-            //  0    0    0    0    0    0    0    0    i    0    0    0    0    0    0    0    BCEGi
-            //  0    0    0    0    0    0    0    0    0    0    0   -i    0    0    0    0    -BCFHi
-            //  0    0    0    0    0    0    0    0    0    0    i    0    0    0    0    0    BCFGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0   -i    0    0    -BDEHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    i    0    0    0    BDEGi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -i    -BDFHi
-            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    i    0    BDFGi
+            //  0   -I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    -ACEHi
+            //  I    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    ACEGi
+            //  0    0    0   -I    0    0    0    0    0    0    0    0    0    0    0    0    -ACFHi
+            //  0    0    I    0    0    0    0    0    0    0    0    0    0    0    0    0    ACFGi
+            //  0    0    0    0    0   -I    0    0    0    0    0    0    0    0    0    0    -ADEHi
+            //  0    0    0    0    I    0    0    0    0    0    0    0    0    0    0    0    ADEGi
+            //  0    0    0    0    0    0    0   -I    0    0    0    0    0    0    0    0    -ADFHi
+            //  0    0    0    0    0    0    I    0    0    0    0    0    0    0    0    0    ADFGi
+            //  0    0    0    0    0    0    0    0    0   -I    0    0    0    0    0    0    -BCEHi
+            //  0    0    0    0    0    0    0    0    I    0    0    0    0    0    0    0    BCEGi
+            //  0    0    0    0    0    0    0    0    0    0    0   -I    0    0    0    0    -BCFHi
+            //  0    0    0    0    0    0    0    0    0    0    I    0    0    0    0    0    BCFGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0   -I    0    0    -BDEHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    I    0    0    0    BDEGi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   -I    -BDFHi
+            //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    I    0    BDFGi
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(2)
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEH);
-            Assert.AreEqual(oRegister[1], oACEG);
-            Assert.AreEqual(oRegister[2], oACFH);
-            Assert.AreEqual(oRegister[3], oACFG);
-            Assert.AreEqual(oRegister[4], oADEH);
-            Assert.AreEqual(oRegister[5], oADEG);
-            Assert.AreEqual(oRegister[6], oADFH);
-            Assert.AreEqual(oRegister[7], oADFG);
-            Assert.AreEqual(oRegister[8], oBCEH);
-            Assert.AreEqual(oRegister[9], oBCEG);
-            Assert.AreEqual(oRegister[10], oBCFH);
-            Assert.AreEqual(oRegister[11], oBCFG);
-            Assert.AreEqual(oRegister[12], oBDEH);
-            Assert.AreEqual(oRegister[13], oBDEG);
-            Assert.AreEqual(oRegister[14], oBDFH);
-            Assert.AreEqual(oRegister[15], oBDFG);
+            Assert.AreEqual(register[0], aceh);
+            Assert.AreEqual(register[1], aceg);
+            Assert.AreEqual(register[2], acfh);
+            Assert.AreEqual(register[3], acfg);
+            Assert.AreEqual(register[4], adeh);
+            Assert.AreEqual(register[5], adeg);
+            Assert.AreEqual(register[6], adfh);
+            Assert.AreEqual(register[7], adfg);
+            Assert.AreEqual(register[8], bceh);
+            Assert.AreEqual(register[9], bceg);
+            Assert.AreEqual(register[10], bcfh);
+            Assert.AreEqual(register[11], bcfg);
+            Assert.AreEqual(register[12], bdeh);
+            Assert.AreEqual(register[13], bdeg);
+            Assert.AreEqual(register[14], bdfh);
+            Assert.AreEqual(register[15], bdfg);
 
-            Assert.AreEqual(oACEG.Amplitude.Real, 1);
-            Assert.AreEqual(oACEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceg.Amplitude.Real, 1);
+            Assert.AreEqual(aceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACEH.Amplitude.Real, -1);
-            Assert.AreEqual(oACEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(aceh.Amplitude.Real, -1);
+            Assert.AreEqual(aceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFG.Amplitude.Real, 1);
-            Assert.AreEqual(oACFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfg.Amplitude.Real, 1);
+            Assert.AreEqual(acfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oACFH.Amplitude.Real, -1);
-            Assert.AreEqual(oACFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(acfh.Amplitude.Real, -1);
+            Assert.AreEqual(acfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEG.Amplitude.Real, 1);
-            Assert.AreEqual(oADEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeg.Amplitude.Real, 1);
+            Assert.AreEqual(adeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADEH.Amplitude.Real, -1);
-            Assert.AreEqual(oADEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adeh.Amplitude.Real, -1);
+            Assert.AreEqual(adeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFG.Amplitude.Real, 1);
-            Assert.AreEqual(oADFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfg.Amplitude.Real, 1);
+            Assert.AreEqual(adfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oADFH.Amplitude.Real, -1);
-            Assert.AreEqual(oADFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(adfh.Amplitude.Real, -1);
+            Assert.AreEqual(adfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEG.Amplitude.Real, 1);
-            Assert.AreEqual(oBCEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceg.Amplitude.Real, 1);
+            Assert.AreEqual(bceg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCEH.Amplitude.Real, -1);
-            Assert.AreEqual(oBCEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bceh.Amplitude.Real, -1);
+            Assert.AreEqual(bceh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFG.Amplitude.Real, 1);
-            Assert.AreEqual(oBCFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfg.Amplitude.Real, 1);
+            Assert.AreEqual(bcfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBCFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBCFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bcfh.Amplitude.Real, -1);
+            Assert.AreEqual(bcfh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEG.Amplitude.Real, 1);
-            Assert.AreEqual(oBDEG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeg.Amplitude.Real, 1);
+            Assert.AreEqual(bdeg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDEH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDEH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdeh.Amplitude.Real, -1);
+            Assert.AreEqual(bdeh.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFG.Amplitude.Real, 1);
-            Assert.AreEqual(oBDFG.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfg.Amplitude.Real, 1);
+            Assert.AreEqual(bdfg.Amplitude.Imaginary, 1);
 
-            Assert.AreEqual(oBDFH.Amplitude.Real, -1);
-            Assert.AreEqual(oBDFH.Amplitude.Imaginary, 1);
+            Assert.AreEqual(bdfh.Amplitude.Real, -1);
+            Assert.AreEqual(bdfh.Amplitude.Imaginary, 1);
 
             //  Reversible
 
             //  -ACEHi  ACEGi -ACFHi  ACFGi -ADEHi  ADEGi -ADFHi  ADFGi -BCEHi  BCEGi -BCFHi  BCFGi -BDEHi  BDEGi -BDFHi  BDFGi 
-            //   0     -i      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEG
-            //   i      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEH
-            //   0      0      0     -i      0      0      0      0      0      0      0      0      0      0      0      0     ACFG
-            //   0      0      i      0      0      0      0      0      0      0      0      0      0      0      0      0     ACFH
-            //   0      0      0      0      0     -i      0      0      0      0      0      0      0      0      0      0     ADEG
-            //   0      0      0      0      i      0      0      0      0      0      0      0      0      0      0      0     ADEH
-            //   0      0      0      0      0      0      0     -i      0      0      0      0      0      0      0      0     ADFG
-            //   0      0      0      0      0      0      i      0      0      0      0      0      0      0      0      0     ADFH
-            //   0      0      0      0      0      0      0      0      0     -i      0      0      0      0      0      0     BCEG
-            //   0      0      0      0      0      0      0      0      i      0      0      0      0      0      0      0     BCEH
-            //   0      0      0      0      0      0      0      0      0      0      0     -i      0      0      0      0     BCFG
-            //   0      0      0      0      0      0      0      0      0      0      i      0      0      0      0      0     BCFH
-            //   0      0      0      0      0      0      0      0      0      0      0      0      0     -i      0      0     BDEG
-            //   0      0      0      0      0      0      0      0      0      0      0      0      i      0      0      0     BDEH
-            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     -i     BDFG
-            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0      i      0     BDFH
+            //   0     -I      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEG
+            //   I      0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     ACEH
+            //   0      0      0     -I      0      0      0      0      0      0      0      0      0      0      0      0     ACFG
+            //   0      0      I      0      0      0      0      0      0      0      0      0      0      0      0      0     ACFH
+            //   0      0      0      0      0     -I      0      0      0      0      0      0      0      0      0      0     ADEG
+            //   0      0      0      0      I      0      0      0      0      0      0      0      0      0      0      0     ADEH
+            //   0      0      0      0      0      0      0     -I      0      0      0      0      0      0      0      0     ADFG
+            //   0      0      0      0      0      0      I      0      0      0      0      0      0      0      0      0     ADFH
+            //   0      0      0      0      0      0      0      0      0     -I      0      0      0      0      0      0     BCEG
+            //   0      0      0      0      0      0      0      0      I      0      0      0      0      0      0      0     BCEH
+            //   0      0      0      0      0      0      0      0      0      0      0     -I      0      0      0      0     BCFG
+            //   0      0      0      0      0      0      0      0      0      0      I      0      0      0      0      0     BCFH
+            //   0      0      0      0      0      0      0      0      0      0      0      0      0     -I      0      0     BDEG
+            //   0      0      0      0      0      0      0      0      0      0      0      0      I      0      0      0     BDEH
+            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0      0     -I     BDFG
+            //   0      0      0      0      0      0      0      0      0      0      0      0      0      0      I      0     BDFH
 
-            oRegister.StateVector = oPauliYGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliYGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }

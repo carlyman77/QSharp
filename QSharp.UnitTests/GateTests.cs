@@ -12,84 +12,52 @@ namespace QSharp.UnitTests
 {
     public class GateTests
     {
-        #region Constructors
-
-        #endregion
-
-        #region Constants
-
         public const double Alpha = 0.687;
         public const double Beta = 0.727;
 
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
-
-        protected void ValidatePefectQubitState(Qubit Qubit, int State)
+        protected void ValidatePefectQubitState(Qubit qubit, int state)
         {
-            switch (State)
+            switch (state)
             {
                 case 0:
-                    ValidateZeroState(Qubit);
+                    ValidateZeroState(qubit);
                     break;
 
                 case 1:
-                    ValidateOneState(Qubit);
+                    ValidateOneState(qubit);
                     break;
             }
         }
 
-        protected void ValidateOneState(Qubit Qubit)
+        protected void ValidateOneState(Qubit qubit)
         {
-            Assert.AreEqual(Qubit.Alpha, 0);
-            Assert.AreEqual(Qubit.Beta, 1);
+            Assert.AreEqual(qubit.Alpha, 0);
+            Assert.AreEqual(qubit.Beta, 1);
         }
 
-        protected void ValidateZeroState(Qubit Qubit)
+        protected void ValidateZeroState(Qubit qubit)
         {
-            Assert.AreEqual(Qubit.Alpha, 1);
-            Assert.AreEqual(Qubit.Beta, 0);
+            Assert.AreEqual(qubit.Alpha, 1);
+            Assert.AreEqual(qubit.Beta, 0);
         }
 
-        protected void ValidateComputationalStateVector(ComputationalBasisState[] ComputationalBasisStates)
+        protected void ValidateComputationalStateVector(ComputationalBasisState[] computationalBasisStates)
         {
-            ValidateComputationalStateVector(ComputationalBasisStates, 1);
+            ValidateComputationalStateVector(computationalBasisStates, 1);
         }
 
-        protected void ValidateComputationalStateVector(ComputationalBasisState[] ComputationalBasisStates, double Real)
+        protected void ValidateComputationalStateVector(ComputationalBasisState[] computationalBasisStates, double real)
         {
-            ValidateComputationalStateVector(ComputationalBasisStates, 1, 0);
+            ValidateComputationalStateVector(computationalBasisStates, 1, 0);
         }
 
-        protected void ValidateComputationalStateVector(ComputationalBasisState[] ComputationalBasisStates, double Real, double Imaginary)
+        protected void ValidateComputationalStateVector(ComputationalBasisState[] computationalBasisStates, double real, double imaginary)
         {
-            foreach (ComputationalBasisState oComputationalBasisState in ComputationalBasisStates)
+            foreach (ComputationalBasisState computationalBasisState in computationalBasisStates)
             {
-                Assert.AreEqual(oComputationalBasisState.Amplitude.Real, Real);
-                Assert.AreEqual(oComputationalBasisState.Amplitude.Imaginary, Imaginary);
+                Assert.AreEqual(computationalBasisState.Amplitude.Real, real);
+                Assert.AreEqual(computationalBasisState.Amplitude.Imaginary, imaginary);
             }
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }

@@ -5,7 +5,6 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using QSharp.Mathematics;
-using System.Diagnostics;
 
 #endregion
 
@@ -14,44 +13,18 @@ namespace QSharp.UnitTests
     [TestClass]
     public class PauliXGateTests : GateTests
     {
-        #region Constructors
-
         public PauliXGateTests()
         {
-            oPauliXGate = new PauliXGate();
+            _pauliXGate = new PauliXGate();
         }
 
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        private PauliXGate oPauliXGate;
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
+        private readonly PauliXGate _pauliXGate;
 
         [TestMethod]
         public void PauliXGate1Qubit()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit() });
 
             //  > Initial state:
             //  > A|0> + B|1> = (0.687A|0> + 0.727B|1>)
@@ -63,42 +36,42 @@ namespace QSharp.UnitTests
             //  (A|0> + B|1>) = (1A|0> + 2B|1>)
             //  (C|0> + D|1>) = (3A|0> + 4B|1>)
 
-            //  ()AC|00> + ()AD|01> + ()BC|10> + ()BD|11>
+            //  (AC|00> + AD|01> + BC|10> + BD|11>)
 
             //  > X_1
             //  > (B|0>) = 0.727|0>
             //  > (A|1>) = 0.687|1>
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
             //  X(0)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
             //  A|0> mapped to A|1>
             //  B|1> mapped to B|0>
-            Assert.AreEqual(oRegister[0], oB);
-            Assert.AreEqual(oRegister[1], oA);
+            Assert.AreEqual(register[0], b);
+            Assert.AreEqual(register[1], a);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
             //  X(0)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
             //  B|0> mapped to B|1>
             //  A|1> mapped to A|0>
-            Assert.AreEqual(oRegister[0], oA);
-            Assert.AreEqual(oRegister[1], oB);
+            Assert.AreEqual(register[0], a);
+            Assert.AreEqual(register[1], b);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate2QubitPostion0()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A|00> + B|01> + C|10> + D|11>) = (0.687A|0> + 0.727B|1>)
 
@@ -108,20 +81,20 @@ namespace QSharp.UnitTests
             //  1   0   0   0   AC
             //  0   1   0   0   AD
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  X(0)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oBC);
-            Assert.AreEqual(oRegister[1], oBD);
-            Assert.AreEqual(oRegister[2], oAC);
-            Assert.AreEqual(oRegister[3], oAD);
+            Assert.AreEqual(register[0], bc);
+            Assert.AreEqual(register[1], bd);
+            Assert.AreEqual(register[2], ac);
+            Assert.AreEqual(register[3], ad);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -131,21 +104,21 @@ namespace QSharp.UnitTests
             //  1   0   0   0   BC
             //  0   1   0   0   BD
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oAC);
-            Assert.AreEqual(oRegister[1], oAD);
-            Assert.AreEqual(oRegister[2], oBC);
-            Assert.AreEqual(oRegister[3], oBD);
+            Assert.AreEqual(register[0], ac);
+            Assert.AreEqual(register[1], ad);
+            Assert.AreEqual(register[2], bc);
+            Assert.AreEqual(register[3], bd);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate2QubitPostion1()
         {
-            int iPosition = 1;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 1;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A|00> + B|01> + C|10> + D|11>) = (0.687A|0> + 0.727B|1>)
 
@@ -155,20 +128,20 @@ namespace QSharp.UnitTests
             //  0   0   0   1   BD
             //  0   0   1   0   BC
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  X(1)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oAD);
-            Assert.AreEqual(oRegister[1], oAC);
-            Assert.AreEqual(oRegister[2], oBD);
-            Assert.AreEqual(oRegister[3], oBC);
+            Assert.AreEqual(register[0], ad);
+            Assert.AreEqual(register[1], ac);
+            Assert.AreEqual(register[2], bd);
+            Assert.AreEqual(register[3], bc);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -178,21 +151,21 @@ namespace QSharp.UnitTests
             //  0   0   0   1   BC
             //  0   0   1   0   BD
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oAC);
-            Assert.AreEqual(oRegister[1], oAD);
-            Assert.AreEqual(oRegister[2], oBC);
-            Assert.AreEqual(oRegister[3], oBD);
+            Assert.AreEqual(register[0], ac);
+            Assert.AreEqual(register[1], ad);
+            Assert.AreEqual(register[2], bc);
+            Assert.AreEqual(register[3], bd);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate3QubitPostion0()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B)(C + D)(E + F)
             //  (ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BCF|111>) = (0.687A|0> + 0.727B|1>)
@@ -208,28 +181,28 @@ namespace QSharp.UnitTests
             //  0   0   1   0   0   0   0   0   ADE 010
             //  0   0   0   1   0   0   0   0   ADF 011
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  X(0)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oBCE);
-            Assert.AreEqual(oRegister[1], oBCF);
-            Assert.AreEqual(oRegister[2], oBDE);
-            Assert.AreEqual(oRegister[3], oBDF);
-            Assert.AreEqual(oRegister[4], oACE);
-            Assert.AreEqual(oRegister[5], oACF);
-            Assert.AreEqual(oRegister[6], oADE);
-            Assert.AreEqual(oRegister[7], oADF);
+            Assert.AreEqual(register[0], bce);
+            Assert.AreEqual(register[1], bcf);
+            Assert.AreEqual(register[2], bde);
+            Assert.AreEqual(register[3], bdf);
+            Assert.AreEqual(register[4], ace);
+            Assert.AreEqual(register[5], acf);
+            Assert.AreEqual(register[6], ade);
+            Assert.AreEqual(register[7], adf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -243,25 +216,25 @@ namespace QSharp.UnitTests
             //  0   0   1   0   0   0   0   0   BDE
             //  0   0   0   1   0   0   0   0   BDF
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate3QubitPostion1()
         {
-            int iPosition = 1;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 1;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B)(C + D)(E + F)
             //  (ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BCF|111>)
@@ -276,28 +249,28 @@ namespace QSharp.UnitTests
             //  0   0   0   0   1   0   0   0   BCE
             //  0   0   0   0   0   1   0   0   BCF
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  X(1)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oADE);
-            Assert.AreEqual(oRegister[1], oADF);
-            Assert.AreEqual(oRegister[2], oACE);
-            Assert.AreEqual(oRegister[3], oACF);
-            Assert.AreEqual(oRegister[4], oBDE);
-            Assert.AreEqual(oRegister[5], oBDF);
-            Assert.AreEqual(oRegister[6], oBCE);
-            Assert.AreEqual(oRegister[7], oBCF);
+            Assert.AreEqual(register[0], ade);
+            Assert.AreEqual(register[1], adf);
+            Assert.AreEqual(register[2], ace);
+            Assert.AreEqual(register[3], acf);
+            Assert.AreEqual(register[4], bde);
+            Assert.AreEqual(register[5], bdf);
+            Assert.AreEqual(register[6], bce);
+            Assert.AreEqual(register[7], bcf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -311,25 +284,25 @@ namespace QSharp.UnitTests
             //  0   0   0   0   1   0   0   0   BDE
             //  0   0   0   0   0   1   0   0   BDF
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate3QubitPostion2()
         {
-            int iPosition = 2;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 2;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B)(C + D)(E + F)
             //  (ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BCF|111>)
@@ -344,28 +317,28 @@ namespace QSharp.UnitTests
             //  0   0   0   0   0   0   0   1   BDF
             //  0   0   0   0   0   0   1   0   BDE
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  X(2)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACF);
-            Assert.AreEqual(oRegister[1], oACE);
-            Assert.AreEqual(oRegister[2], oADF);
-            Assert.AreEqual(oRegister[3], oADE);
-            Assert.AreEqual(oRegister[4], oBCF);
-            Assert.AreEqual(oRegister[5], oBCE);
-            Assert.AreEqual(oRegister[6], oBDF);
-            Assert.AreEqual(oRegister[7], oBDE);
+            Assert.AreEqual(register[0], acf);
+            Assert.AreEqual(register[1], ace);
+            Assert.AreEqual(register[2], adf);
+            Assert.AreEqual(register[3], ade);
+            Assert.AreEqual(register[4], bcf);
+            Assert.AreEqual(register[5], bce);
+            Assert.AreEqual(register[6], bdf);
+            Assert.AreEqual(register[7], bde);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -379,25 +352,25 @@ namespace QSharp.UnitTests
             //  0   0   0   0   0   0   0   1   BDE
             //  0   0   0   0   0   0   1   0   BDF
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate4QubitPostion0()
         {
-            int iPosition = 0;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 0;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
             //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
@@ -420,44 +393,44 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    1    0    0    0    0    0    0    0    0    0    ADFG
             //  0    0    0    0    0    0    0    1    0    0    0    0    0    0    0    0    ADFH
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(0)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oBCEG);
-            Assert.AreEqual(oRegister[1], oBCEH);
-            Assert.AreEqual(oRegister[2], oBCFG);
-            Assert.AreEqual(oRegister[3], oBCFH);
-            Assert.AreEqual(oRegister[4], oBDEG);
-            Assert.AreEqual(oRegister[5], oBDEH);
-            Assert.AreEqual(oRegister[6], oBDFG);
-            Assert.AreEqual(oRegister[7], oBDFH);
-            Assert.AreEqual(oRegister[8], oACEG);
-            Assert.AreEqual(oRegister[9], oACEH);
-            Assert.AreEqual(oRegister[10], oACFG);
-            Assert.AreEqual(oRegister[11], oACFH);
-            Assert.AreEqual(oRegister[12], oADEG);
-            Assert.AreEqual(oRegister[13], oADEH);
-            Assert.AreEqual(oRegister[14], oADFG);
-            Assert.AreEqual(oRegister[15], oADFH);
+            Assert.AreEqual(register[0], bceg);
+            Assert.AreEqual(register[1], bceh);
+            Assert.AreEqual(register[2], bcfg);
+            Assert.AreEqual(register[3], bcfh);
+            Assert.AreEqual(register[4], bdeg);
+            Assert.AreEqual(register[5], bdeh);
+            Assert.AreEqual(register[6], bdfg);
+            Assert.AreEqual(register[7], bdfh);
+            Assert.AreEqual(register[8], aceg);
+            Assert.AreEqual(register[9], aceh);
+            Assert.AreEqual(register[10], acfg);
+            Assert.AreEqual(register[11], acfh);
+            Assert.AreEqual(register[12], adeg);
+            Assert.AreEqual(register[13], adeh);
+            Assert.AreEqual(register[14], adfg);
+            Assert.AreEqual(register[15], adfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -479,33 +452,33 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    1    0    0    0    0    0    0    0    0    0    BDFG
             //  0    0    0    0    0    0    0    1    0    0    0    0    0    0    0    0    BDFH
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate4QubitPostion1()
         {
-            int iPosition = 1;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 1;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
             //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
@@ -528,44 +501,44 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    1    0    0    0    0    0    BCFG
             //  0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    0    BCFH
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(1)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oADEG);
-            Assert.AreEqual(oRegister[1], oADEH);
-            Assert.AreEqual(oRegister[2], oADFG);
-            Assert.AreEqual(oRegister[3], oADFH);
-            Assert.AreEqual(oRegister[4], oACEG);
-            Assert.AreEqual(oRegister[5], oACEH);
-            Assert.AreEqual(oRegister[6], oACFG);
-            Assert.AreEqual(oRegister[7], oACFH);
-            Assert.AreEqual(oRegister[8], oBDEG);
-            Assert.AreEqual(oRegister[9], oBDEH);
-            Assert.AreEqual(oRegister[10], oBDFG);
-            Assert.AreEqual(oRegister[11], oBDFH);
-            Assert.AreEqual(oRegister[12], oBCEG);
-            Assert.AreEqual(oRegister[13], oBCEH);
-            Assert.AreEqual(oRegister[14], oBCFG);
-            Assert.AreEqual(oRegister[15], oBCFH);
+            Assert.AreEqual(register[0], adeg);
+            Assert.AreEqual(register[1], adeh);
+            Assert.AreEqual(register[2], adfg);
+            Assert.AreEqual(register[3], adfh);
+            Assert.AreEqual(register[4], aceg);
+            Assert.AreEqual(register[5], aceh);
+            Assert.AreEqual(register[6], acfg);
+            Assert.AreEqual(register[7], acfh);
+            Assert.AreEqual(register[8], bdeg);
+            Assert.AreEqual(register[9], bdeh);
+            Assert.AreEqual(register[10], bdfg);
+            Assert.AreEqual(register[11], bdfh);
+            Assert.AreEqual(register[12], bceg);
+            Assert.AreEqual(register[13], bceh);
+            Assert.AreEqual(register[14], bcfg);
+            Assert.AreEqual(register[15], bcfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -587,33 +560,33 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    1    0    0    0    0    0    BCFG
             //  0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    0    BCFH
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate4QubitPostion2()
         {
-            int iPosition = 2;
-            Register oRegister = new Register(new Qubit[] { new Qubit(1, 1), new Qubit(1, 1), new Qubit(1, 1), new Qubit(1, 1) });
+            int position = 2;
+            Register register = new Register(new Qubit[] { new Qubit(1, 1), new Qubit(1, 1), new Qubit(1, 1), new Qubit(1, 1) });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
             //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
@@ -636,44 +609,44 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    BDEG
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    BDEH
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(2)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACFG);
-            Assert.AreEqual(oRegister[1], oACFH);
-            Assert.AreEqual(oRegister[2], oACEG);
-            Assert.AreEqual(oRegister[3], oACEH);
-            Assert.AreEqual(oRegister[4], oADFG);
-            Assert.AreEqual(oRegister[5], oADFH);
-            Assert.AreEqual(oRegister[6], oADEG);
-            Assert.AreEqual(oRegister[7], oADEH);
-            Assert.AreEqual(oRegister[8], oBCFG);
-            Assert.AreEqual(oRegister[9], oBCFH);
-            Assert.AreEqual(oRegister[10], oBCEG);
-            Assert.AreEqual(oRegister[11], oBCEH);
-            Assert.AreEqual(oRegister[12], oBDFG);
-            Assert.AreEqual(oRegister[13], oBDFH);
-            Assert.AreEqual(oRegister[14], oBDEG);
-            Assert.AreEqual(oRegister[15], oBDEH);
+            Assert.AreEqual(register[0], acfg);
+            Assert.AreEqual(register[1], acfh);
+            Assert.AreEqual(register[2], aceg);
+            Assert.AreEqual(register[3], aceh);
+            Assert.AreEqual(register[4], adfg);
+            Assert.AreEqual(register[5], adfh);
+            Assert.AreEqual(register[6], adeg);
+            Assert.AreEqual(register[7], adeh);
+            Assert.AreEqual(register[8], bcfg);
+            Assert.AreEqual(register[9], bcfh);
+            Assert.AreEqual(register[10], bceg);
+            Assert.AreEqual(register[11], bceh);
+            Assert.AreEqual(register[12], bdfg);
+            Assert.AreEqual(register[13], bdfh);
+            Assert.AreEqual(register[14], bdeg);
+            Assert.AreEqual(register[15], bdeh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -695,33 +668,33 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    BDFG
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    BDFH
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void PauliXGate4QubitPostion3()
         {
-            int iPosition = 3;
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            int position = 3;
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
             //  (A + B) (x) (C + D) (x) (E + F) (x) (G + H)
             //  ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH + BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH
@@ -744,44 +717,44 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    BDFH
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    BDFG
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  X(2)
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEH);
-            Assert.AreEqual(oRegister[1], oACEG);
-            Assert.AreEqual(oRegister[2], oACFH);
-            Assert.AreEqual(oRegister[3], oACFG);
-            Assert.AreEqual(oRegister[4], oADEH);
-            Assert.AreEqual(oRegister[5], oADEG);
-            Assert.AreEqual(oRegister[6], oADFH);
-            Assert.AreEqual(oRegister[7], oADFG);
-            Assert.AreEqual(oRegister[8], oBCEH);
-            Assert.AreEqual(oRegister[9], oBCEG);
-            Assert.AreEqual(oRegister[10], oBCFH);
-            Assert.AreEqual(oRegister[11], oBCFG);
-            Assert.AreEqual(oRegister[12], oBDEH);
-            Assert.AreEqual(oRegister[13], oBDEG);
-            Assert.AreEqual(oRegister[14], oBDFH);
-            Assert.AreEqual(oRegister[15], oBDFG);
+            Assert.AreEqual(register[0], aceh);
+            Assert.AreEqual(register[1], aceg);
+            Assert.AreEqual(register[2], acfh);
+            Assert.AreEqual(register[3], acfg);
+            Assert.AreEqual(register[4], adeh);
+            Assert.AreEqual(register[5], adeg);
+            Assert.AreEqual(register[6], adfh);
+            Assert.AreEqual(register[7], adfg);
+            Assert.AreEqual(register[8], bceh);
+            Assert.AreEqual(register[9], bceg);
+            Assert.AreEqual(register[10], bcfh);
+            Assert.AreEqual(register[11], bcfg);
+            Assert.AreEqual(register[12], bdeh);
+            Assert.AreEqual(register[13], bdeg);
+            Assert.AreEqual(register[14], bdfh);
+            Assert.AreEqual(register[15], bdfg);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  Reversible
 
@@ -803,32 +776,26 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    BDFG
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    BDFH
 
-            oRegister.StateVector = oPauliXGate.ApplyTo(iPosition, oRegister);
+            register.StateVector = _pauliXGate.ApplyTo(position, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }

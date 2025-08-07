@@ -3,6 +3,7 @@
 using System;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using QSharp.Mathematics;
 
 #endregion
@@ -12,39 +13,13 @@ namespace QSharp.UnitTests
     [TestClass]
     public class MatrixReflectTests
     {
-        #region Constructors
-
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
-
         [TestMethod]
         public void Reflect2x2()
         {
-            Matrix oMatrix = new IdentityMatrix();
-            oMatrix.Reflect();
+            Matrix matrix = new IdentityMatrix();
+            matrix.Reflect();
 
-			Matrix oTestMatrix = new Matrix(2, 2)
+			Matrix testMatrix = new Matrix(2, 2)
 			{
 				[0, 0] = 0,
 				[0, 1] = 1,
@@ -57,16 +32,16 @@ namespace QSharp.UnitTests
 			// {1, 0}
 			// }
 
-            Assert.AreEqual(oMatrix, oTestMatrix);
+            Assert.AreEqual(matrix, testMatrix);
         }
 
 		[TestMethod]
 		public void Reflect4x4()
 		{
-			Matrix oMatrix = new IdentityMatrix().Tensor(new IdentityMatrix());
-			oMatrix.Reflect();
+			Matrix matrix = new IdentityMatrix().Tensor(new IdentityMatrix());
+			matrix.Reflect();
 
-			Matrix oTestMatrix = new Matrix(4, 4)
+			Matrix testMatrix = new Matrix(4, 4)
 			{
 				[0, 0] = 0,
 				[0, 1] = 0,
@@ -86,13 +61,7 @@ namespace QSharp.UnitTests
 				[3, 3] = 0,
 			};
 
-			Assert.AreEqual(oMatrix, oTestMatrix);
+			Assert.AreEqual(matrix, testMatrix);
 		}
-
-		#endregion
-
-		#region Delegates
-
-		#endregion
 	}
 }

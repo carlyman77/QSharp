@@ -14,177 +14,151 @@ namespace QSharp.UnitTests
     [TestClass]
     public class MeasureTests : GateTests
     {
-        #region Constructors
-
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
-
         [TestMethod]
         public void Measure1QubitX0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure1QubitX0Test1()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure1QubitX0Test2()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
         
         [TestMethod]
         public void Measure1QubitX0Test3()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitX0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -197,59 +171,59 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 01) => (AC + AD)
             //  P_1 = (10 + 11) => (BC + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            //  double[] dProbabilities = new double[2]
+            //  double[] dPrbabilities = new double[2]
             //  {
-            //      (oAC.Amplitude.ModSquare() + oAD.Amplitude.ModSquare()),
-            //      (oBC.Amplitude.ModSquare() + oBD.Amplitude.ModSquare())
+            //      (ac.Amplitude.ModSquare() + ad.Amplitude.ModSquare()),
+            //      (bc.Amplitude.ModSquare() + bd.Amplitude.ModSquare())
             //  };
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 01) => (AC + AD)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
-                //  P_1 = (10 + 11) => (BC + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                //  P_1 = (10 + 11) => (bc + bd)
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitX1Test0()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -262,177 +236,177 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 10) => (AC + BC)
             //  P_1 = (01 + 11) => (AD + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 10) => (AC + BC)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (01 + 11) => (AD + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure1QubitZ0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure1QubitZ0Test1()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure1QubitZ0Test2()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure1QubitZ0Test3()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.641;
             double dB = 0.768;
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB) });
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = register.StateVector[0];
+            ComputationalBasisState b = register.StateVector[1];
 
-            Assert.AreEqual(oA.Amplitude.Real.Round(10), dA);
-            Assert.AreEqual(oB.Amplitude.Real.Round(10), dB);
+            Assert.AreEqual(a.Amplitude.Real.Round(10), dA);
+            Assert.AreEqual(b.Amplitude.Real.Round(10), dB);
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
-                Assert.IsTrue(oRegister.StateVector[0].Amplitude != 0);
-                Assert.AreEqual(oRegister.StateVector[1].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[0].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[1].Amplitude, 0);
             }
             else
             {
-                Assert.AreEqual(oRegister.StateVector[0].Amplitude, 0);
-                Assert.IsTrue(oRegister.StateVector[1].Amplitude != 0);
+                Assert.AreEqual(register.StateVector[0].Amplitude, 0);
+                Assert.IsTrue(register.StateVector[1].Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitZ0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -445,59 +419,59 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 01) => (AC + AD)
             //  P_1 = (10 + 11) => (BC + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            //  double[] dProbabilities = new double[2]
+            //  double[] dPrbabilities = new double[2]
             //  {
-            //      (oAC.Amplitude.ModSquare() + oAD.Amplitude.ModSquare()),
-            //      (oBC.Amplitude.ModSquare() + oBD.Amplitude.ModSquare())
+            //      (ac.Amplitude.ModSquare() + ad.Amplitude.ModSquare()),
+            //      (bc.Amplitude.ModSquare() + bd.Amplitude.ModSquare())
             //  };
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 01) => (AC + AD)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (10 + 11) => (BC + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitZ0Test1()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -510,59 +484,59 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 01) => (AC + AD)
             //  P_1 = (10 + 11) => (BC + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            //  double[] dProbabilities = new double[2]
+            //  double[] dPrbabilities = new double[2]
             //  {
-            //      (oAC.Amplitude.ModSquare() + oAD.Amplitude.ModSquare()),
-            //      (oBC.Amplitude.ModSquare() + oBD.Amplitude.ModSquare())
+            //      (ac.Amplitude.ModSquare() + ad.Amplitude.ModSquare()),
+            //      (bc.Amplitude.ModSquare() + bd.Amplitude.ModSquare())
             //  };
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 01) => (AC + AD)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (10 + 11) => (BC + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitZ0Test2()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -575,59 +549,59 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 01) => (AC + AD)
             //  P_1 = (10 + 11) => (BC + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            //  double[] dProbabilities = new double[2]
+            //  double[] dPrbabilities = new double[2]
             //  {
-            //      (oAC.Amplitude.ModSquare() + oAD.Amplitude.ModSquare()),
-            //      (oBC.Amplitude.ModSquare() + oBD.Amplitude.ModSquare())
+            //      (ac.Amplitude.ModSquare() + ad.Amplitude.ModSquare()),
+            //      (bc.Amplitude.ModSquare() + bd.Amplitude.ModSquare())
             //  };
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 01) => (AC + AD)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (10 + 11) => (BC + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitZ0Test3()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -640,59 +614,59 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 01) => (AC + AD)
             //  P_1 = (10 + 11) => (BC + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            //  double[] dProbabilities = new double[2]
+            //  double[] dPrbabilities = new double[2]
             //  {
-            //      (oAC.Amplitude.ModSquare() + oAD.Amplitude.ModSquare()),
-            //      (oBC.Amplitude.ModSquare() + oBD.Amplitude.ModSquare())
+            //      (ac.Amplitude.ModSquare() + ad.Amplitude.ModSquare()),
+            //      (bc.Amplitude.ModSquare() + bd.Amplitude.ModSquare())
             //  };
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 01) => (AC + AD)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (10 + 11) => (BC + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitZ1Test0()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -705,53 +679,53 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 10) => (AC + BC)
             //  P_1 = (01 + 11) => (AD + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 10) => (AC + BC)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (01 + 11) => (AD + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             } 
         }
 
         [TestMethod]
         public void Measure2QubitZ1Test1()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -764,53 +738,53 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 10) => (AC + BC)
             //  P_1 = (01 + 11) => (AD + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 10) => (AC + BC)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (01 + 11) => (AD + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
         
         [TestMethod]
         public void Measure2QubitZ1Test2()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -823,53 +797,53 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 10) => (AC + BC)
             //  P_1 = (01 + 11) => (AD + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 10) => (AC + BC)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (01 + 11) => (AD + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure2QubitZ1Test3()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.520;
             double dB = 0.854;
             double dC = 0.641;
             double dD = 0.768;
 
-            double dAC = (dA * dC);
-            double dAD = (dA * dD);
-            double dBC = (dB * dC);
-            double dBD = (dB * dD);
+            double dac = (dA * dC);
+            double dad = (dA * dD);
+            double dbc = (dB * dC);
+            double dbd = (dB * dD);
 
-            Register oRegister = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
+            Register register = new Register(new Qubit[] { new Qubit(dA, dB), new Qubit(dC, dD) });
 
-            ComputationalBasisState oAC = oRegister.StateVector[0];
-            ComputationalBasisState oAD = oRegister.StateVector[1];
-            ComputationalBasisState oBC = oRegister.StateVector[2];
-            ComputationalBasisState oBD = oRegister.StateVector[3];
+            ComputationalBasisState ac = register.StateVector[0];
+            ComputationalBasisState ad = register.StateVector[1];
+            ComputationalBasisState bc = register.StateVector[2];
+            ComputationalBasisState bd = register.StateVector[3];
 
             //  AC|00> + AD|01> + BC|10> + BD|11>
 
@@ -882,36 +856,36 @@ namespace QSharp.UnitTests
             //  P_0 = (00 + 10) => (AC + BC)
             //  P_1 = (01 + 11) => (AD + BD)
 
-            Assert.AreEqual(oAC.Amplitude.Real.Round(10), dAC.Round(10));
-            Assert.AreEqual(oAD.Amplitude.Real.Round(10), dAD.Round(10));
-            Assert.AreEqual(oBC.Amplitude.Real.Round(10), dBC.Round(10));
-            Assert.AreEqual(oBD.Amplitude.Real.Round(10), dBD.Round(10));
+            Assert.AreEqual(ac.Amplitude.Real.Round(10), dac.Round(10));
+            Assert.AreEqual(ad.Amplitude.Real.Round(10), dad.Round(10));
+            Assert.AreEqual(bc.Amplitude.Real.Round(10), dbc.Round(10));
+            Assert.AreEqual(bd.Amplitude.Real.Round(10), dbd.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (00 + 10) => (AC + BC)
-                Assert.IsTrue(oAC.Amplitude != 0);
-                Assert.AreEqual(oAD.Amplitude, 0);
-                Assert.IsTrue(oBC.Amplitude != 0);
-                Assert.AreEqual(oBD.Amplitude, 0);
+                Assert.IsTrue(ac.Amplitude != 0);
+                Assert.AreEqual(ad.Amplitude, 0);
+                Assert.IsTrue(bc.Amplitude != 0);
+                Assert.AreEqual(bd.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (01 + 11) => (AD + BD)
-                Assert.AreEqual(oAC.Amplitude, 0);
-                Assert.IsTrue(oAD.Amplitude != 0);
-                Assert.AreEqual(oBC.Amplitude, 0);
-                Assert.IsTrue(oBD.Amplitude != 0);
+                Assert.AreEqual(ac.Amplitude, 0);
+                Assert.IsTrue(ad.Amplitude != 0);
+                Assert.AreEqual(bc.Amplitude, 0);
+                Assert.IsTrue(bd.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitX0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -920,30 +894,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -960,48 +934,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
             //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureX(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureX(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1010,30 +984,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1050,48 +1024,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
             //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ0Test1()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1100,30 +1074,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1140,48 +1114,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
             //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ0Test2()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1190,30 +1164,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1230,48 +1204,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
             //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
         
         [TestMethod]
         public void Measure3QubitZ0Test3()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1280,30 +1254,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1320,48 +1294,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
             //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 010 + 011) => (ACE + ACF + ADE + ADF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (100 + 101 + 110 + 111) => (BCE + BCF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ1Test0()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1370,30 +1344,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1410,48 +1384,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
             //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ1Test1()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1460,30 +1434,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1500,48 +1474,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
             //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ1Test2()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1550,30 +1524,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1590,48 +1564,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
             //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ1Test3()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1640,30 +1614,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1680,48 +1654,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
             //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 001 + 100 + 101) => (ACE + ACF + BCE + BCF)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (010 + 011 + 110 + 111) => (ADE + ADF + BDE + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ2Test0()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1730,30 +1704,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1770,48 +1744,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
             //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ2Test1()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1820,30 +1794,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1860,48 +1834,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
             //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure3QubitZ2Test2()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -1910,30 +1884,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -1950,48 +1924,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
             //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
         
         [TestMethod]
         public void Measure3QubitZ2Test3()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.71393431776757943;
             double dB = 0.700212674773701;
@@ -2000,30 +1974,30 @@ namespace QSharp.UnitTests
             double dE = 0.627403547723271;
             double dF = 0.778694284237564;
 
-            double dACE = (dA * dC * dE);
-            double dACF = (dA * dC * dF);
-            double dADE = (dA * dD * dE);
-            double dADF = (dA * dD * dF);
-            double dBCE = (dB * dC * dE);
-            double dBCF = (dB * dC * dF);
-            double dBDE = (dB * dD * dE);
-            double dBDF = (dB * dD * dF);
+            double dace = (dA * dC * dE);
+            double dacf = (dA * dC * dF);
+            double dade = (dA * dD * dE);
+            double dadf = (dA * dD * dF);
+            double dbce = (dB * dC * dE);
+            double dbcf = (dB * dC * dF);
+            double dbde = (dB * dD * dE);
+            double dbdf = (dB * dD * dF);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
                 new Qubit(dE, dF)
             });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  ACE|000> + ACF|001> + ADE|010> + ADF|011> + BCE|100> + BCF|101> + BDE|110> + BDF|111>
 
@@ -2040,48 +2014,48 @@ namespace QSharp.UnitTests
             //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
             //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
 
-            Assert.AreEqual(oACE.Amplitude.Real.Round(10), dACE.Round(10));
-            Assert.AreEqual(oACF.Amplitude.Real.Round(10), dACF.Round(10));
-            Assert.AreEqual(oADE.Amplitude.Real.Round(10), dADE.Round(10));
-            Assert.AreEqual(oADF.Amplitude.Real.Round(10), dADF.Round(10));
-            Assert.AreEqual(oBCE.Amplitude.Real.Round(10), dBCE.Round(10));
-            Assert.AreEqual(oBCF.Amplitude.Real.Round(10), dBCF.Round(10));
-            Assert.AreEqual(oBDE.Amplitude.Real.Round(10), dBDE.Round(10));
-            Assert.AreEqual(oBDF.Amplitude.Real.Round(10), dBDF.Round(10));
+            Assert.AreEqual(ace.Amplitude.Real.Round(10), dace.Round(10));
+            Assert.AreEqual(acf.Amplitude.Real.Round(10), dacf.Round(10));
+            Assert.AreEqual(ade.Amplitude.Real.Round(10), dade.Round(10));
+            Assert.AreEqual(adf.Amplitude.Real.Round(10), dadf.Round(10));
+            Assert.AreEqual(bce.Amplitude.Real.Round(10), dbce.Round(10));
+            Assert.AreEqual(bcf.Amplitude.Real.Round(10), dbcf.Round(10));
+            Assert.AreEqual(bde.Amplitude.Real.Round(10), dbde.Round(10));
+            Assert.AreEqual(bdf.Amplitude.Real.Round(10), dbdf.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (000 + 010 + 100 + 110) => (ACE + ADE + BCE + BDE)
-                Assert.IsTrue(oACE.Amplitude != 0);
-                Assert.AreEqual(oACF.Amplitude, 0);
-                Assert.IsTrue(oADE.Amplitude != 0);
-                Assert.AreEqual(oADF.Amplitude, 0);
-                Assert.IsTrue(oBCE.Amplitude != 0);
-                Assert.AreEqual(oBCF.Amplitude, 0);
-                Assert.IsTrue(oBDE.Amplitude != 0);
-                Assert.AreEqual(oBDF.Amplitude, 0);
+                Assert.IsTrue(ace.Amplitude != 0);
+                Assert.AreEqual(acf.Amplitude, 0);
+                Assert.IsTrue(ade.Amplitude != 0);
+                Assert.AreEqual(adf.Amplitude, 0);
+                Assert.IsTrue(bce.Amplitude != 0);
+                Assert.AreEqual(bcf.Amplitude, 0);
+                Assert.IsTrue(bde.Amplitude != 0);
+                Assert.AreEqual(bdf.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (001 + 011 + 101 + 111) => (ACF + ADF + BCF + BDF)
-                Assert.AreEqual(oACE.Amplitude, 0);
-                Assert.IsTrue(oACF.Amplitude != 0);
-                Assert.AreEqual(oADE.Amplitude, 0);
-                Assert.IsTrue(oADF.Amplitude != 0);
-                Assert.AreEqual(oBCE.Amplitude, 0);
-                Assert.IsTrue(oBCF.Amplitude != 0);
-                Assert.AreEqual(oBDE.Amplitude, 0);
-                Assert.IsTrue(oBDF.Amplitude != 0);
+                Assert.AreEqual(ace.Amplitude, 0);
+                Assert.IsTrue(acf.Amplitude != 0);
+                Assert.AreEqual(ade.Amplitude, 0);
+                Assert.IsTrue(adf.Amplitude != 0);
+                Assert.AreEqual(bce.Amplitude, 0);
+                Assert.IsTrue(bcf.Amplitude != 0);
+                Assert.AreEqual(bde.Amplitude, 0);
+                Assert.IsTrue(bdf.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ0Test0()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2092,24 +2066,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2117,22 +2091,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -2158,72 +2132,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
             //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ0Test1()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2234,24 +2208,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2259,22 +2233,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -2300,72 +2274,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
             //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ0Test2()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2376,24 +2350,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2401,22 +2375,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -2442,72 +2416,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
             //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ0Test3()
         {
-            int iMeasureIndex = 0;
+            int measureIndex = 0;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2518,24 +2492,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2543,22 +2517,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -2584,72 +2558,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
             //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 0100 + 0101 + 0110 + 0111) => (ACEG + ACEH + ACFG + ACFH + ADEG + ADEH + ADFG + ADFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (1000 + 1001 + 1010 + 1011 + 1100 + 1101 + 1110 + 1111) => (BCEG + BCEH + BCFG + BCFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ1Test0()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2660,24 +2634,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2685,22 +2659,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -2726,72 +2700,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
             //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ1Test1()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2802,24 +2776,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2827,22 +2801,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -2868,72 +2842,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
             //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ1Test2()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -2944,24 +2918,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -2969,22 +2943,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3010,72 +2984,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
             //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ1Test3()
         {
-            int iMeasureIndex = 1;
+            int measureIndex = 1;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3086,24 +3060,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3111,22 +3085,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3152,72 +3126,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
             //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0010 + 0011 + 1000 + 1001 + 1010 + 1011) => (ACEG + ACEH + ACFG + ACFH + BCEG + BCEH + BCFG + BCFH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0100 + 0101 + 0110 + 0111 + 1100 + 1101 + 1110 + 1111) => (ADEG + ADEH + ADFG + ADFH + BDEG + BDEH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ2Test0()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3228,24 +3202,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3253,22 +3227,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3294,72 +3268,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
             //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ2Test1()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3370,24 +3344,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3395,22 +3369,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3436,72 +3410,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
             //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ2Test2()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3512,24 +3486,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3537,22 +3511,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3578,72 +3552,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
             //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ2Test3()
         {
-            int iMeasureIndex = 2;
+            int measureIndex = 2;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3654,24 +3628,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3679,22 +3653,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3720,72 +3694,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
             //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0001 + 0100 + 0101 + 1000 + 1001 + 1100 + 1101) => (ACEG + ACEH + ADEG + ADEH + BCEG + BCEH + BDEG + BDEH)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0010 + 0011 + 0110 + 0111 + 1010 + 1011 + 1110 + 1111) => (ACFG + ACFH + ADFG + ADFH + BCFG + BCFH + BDFG + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ3Test0()
         {
-            int iMeasureIndex = 3;
+            int measureIndex = 3;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3796,24 +3770,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3821,22 +3795,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -3862,72 +3836,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
             //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ3Test1()
         {
-            int iMeasureIndex = 3;
+            int measureIndex = 3;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -3938,24 +3912,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -3963,22 +3937,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -4004,72 +3978,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
             //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ3Test2()
         {
-            int iMeasureIndex = 3;
+            int measureIndex = 3;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -4080,24 +4054,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -4105,22 +4079,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -4146,72 +4120,72 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
             //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
 
         [TestMethod]
         public void Measure4QubitZ3Test3()
         {
-            int iMeasureIndex = 3;
+            int measureIndex = 3;
 
             double dA = 0.384054324124933;
             double dB = 0.923310498218742;
@@ -4222,24 +4196,24 @@ namespace QSharp.UnitTests
             double dG = 0.662784430422039;
             double dH = 0.748810255532156;
 
-            double dACEG = (dA * dC * dE * dG);
-            double dACEH = (dA * dC * dE * dH);
-            double dACFG = (dA * dC * dF * dG);
-            double dACFH = (dA * dC * dF * dH);
-            double dADEG = (dA * dD * dE * dG);
-            double dADEH = (dA * dD * dE * dH);
-            double dADFG = (dA * dD * dF * dG);
-            double dADFH = (dA * dD * dF * dH);
-            double dBCEG = (dB * dC * dE * dG);
-            double dBCEH = (dB * dC * dE * dH);
-            double dBCFG = (dB * dC * dF * dG);
-            double dBCFH = (dB * dC * dF * dH);
-            double dBDEG = (dB * dD * dE * dG);
-            double dBDEH = (dB * dD * dE * dH);
-            double dBDFG = (dB * dD * dF * dG);
-            double dBDFH = (dB * dD * dF * dH);
+            double daceg = (dA * dC * dE * dG);
+            double daceh = (dA * dC * dE * dH);
+            double dacfg = (dA * dC * dF * dG);
+            double dacfh = (dA * dC * dF * dH);
+            double dadeg = (dA * dD * dE * dG);
+            double dadeh = (dA * dD * dE * dH);
+            double dadfg = (dA * dD * dF * dG);
+            double dadfh = (dA * dD * dF * dH);
+            double dbceg = (dB * dC * dE * dG);
+            double dbceh = (dB * dC * dE * dH);
+            double dbcfg = (dB * dC * dF * dG);
+            double dbcfh = (dB * dC * dF * dH);
+            double dbdeg = (dB * dD * dE * dG);
+            double dbdeh = (dB * dD * dE * dH);
+            double dbdfg = (dB * dD * dF * dG);
+            double dbdfh = (dB * dD * dF * dH);
 
-            Register oRegister = new Register(new Qubit[]
+            Register register = new Register(new Qubit[]
             {
                 new Qubit(dA, dB),
                 new Qubit(dC, dD),
@@ -4247,22 +4221,22 @@ namespace QSharp.UnitTests
                 new Qubit(dG, dH)
             });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  ACEG|0000> + ACEH|0001> + ACFG|0010> + ACFH|0011> + ADEG|0100> + ADEH|0101> + ADFG|0110> + ADFH|0111> + 
             //  BCEG|1000> + BCEH|1001> + BCFG|1010> + BCFH|1011> + BDEG|1100> + BDEH|1101> + BDFG|1110> + BDFH|1111>
@@ -4288,72 +4262,66 @@ namespace QSharp.UnitTests
             //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
             //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
 
-            Assert.AreEqual(oACEG.Amplitude.Real.Round(10), dACEG.Round(10));
-            Assert.AreEqual(oACEH.Amplitude.Real.Round(10), dACEH.Round(10));
-            Assert.AreEqual(oACFG.Amplitude.Real.Round(10), dACFG.Round(10));
-            Assert.AreEqual(oACFH.Amplitude.Real.Round(10), dACFH.Round(10));
-            Assert.AreEqual(oADEG.Amplitude.Real.Round(10), dADEG.Round(10));
-            Assert.AreEqual(oADEH.Amplitude.Real.Round(10), dADEH.Round(10));
-            Assert.AreEqual(oADFG.Amplitude.Real.Round(10), dADFG.Round(10));
-            Assert.AreEqual(oADFH.Amplitude.Real.Round(10), dADFH.Round(10));
-            Assert.AreEqual(oBCEG.Amplitude.Real.Round(10), dBCEG.Round(10));
-            Assert.AreEqual(oBCEH.Amplitude.Real.Round(10), dBCEH.Round(10));
-            Assert.AreEqual(oBCFG.Amplitude.Real.Round(10), dBCFG.Round(10));
-            Assert.AreEqual(oBCFH.Amplitude.Real.Round(10), dBCFH.Round(10));
-            Assert.AreEqual(oBDEG.Amplitude.Real.Round(10), dBDEG.Round(10));
-            Assert.AreEqual(oBDEH.Amplitude.Real.Round(10), dBDEH.Round(10));
-            Assert.AreEqual(oBDFG.Amplitude.Real.Round(10), dBDFG.Round(10));
-            Assert.AreEqual(oBDFH.Amplitude.Real.Round(10), dBDFH.Round(10));
+            Assert.AreEqual(aceg.Amplitude.Real.Round(10), daceg.Round(10));
+            Assert.AreEqual(aceh.Amplitude.Real.Round(10), daceh.Round(10));
+            Assert.AreEqual(acfg.Amplitude.Real.Round(10), dacfg.Round(10));
+            Assert.AreEqual(acfh.Amplitude.Real.Round(10), dacfh.Round(10));
+            Assert.AreEqual(adeg.Amplitude.Real.Round(10), dadeg.Round(10));
+            Assert.AreEqual(adeh.Amplitude.Real.Round(10), dadeh.Round(10));
+            Assert.AreEqual(adfg.Amplitude.Real.Round(10), dadfg.Round(10));
+            Assert.AreEqual(adfh.Amplitude.Real.Round(10), dadfh.Round(10));
+            Assert.AreEqual(bceg.Amplitude.Real.Round(10), dbceg.Round(10));
+            Assert.AreEqual(bceh.Amplitude.Real.Round(10), dbceh.Round(10));
+            Assert.AreEqual(bcfg.Amplitude.Real.Round(10), dbcfg.Round(10));
+            Assert.AreEqual(bcfh.Amplitude.Real.Round(10), dbcfh.Round(10));
+            Assert.AreEqual(bdeg.Amplitude.Real.Round(10), dbdeg.Round(10));
+            Assert.AreEqual(bdeh.Amplitude.Real.Round(10), dbdeh.Round(10));
+            Assert.AreEqual(bdfg.Amplitude.Real.Round(10), dbdfg.Round(10));
+            Assert.AreEqual(bdfh.Amplitude.Real.Round(10), dbdfh.Round(10));
 
-            int iState = oRegister.MeasureZ(iMeasureIndex);
-            ValidatePefectQubitState(oRegister.Qubits[iMeasureIndex], iState);
+            int state = register.MeasureZ(measureIndex);
+            ValidatePefectQubitState(register.Qubits[measureIndex], state);
 
-            if (iState == 0)
+            if (state == 0)
             {
                 //  P_0 = (0000 + 0010 + 0100 + 0110 + 1000 + 1010 + 1100 + 1110) => (ACEG + ACFG + ADEG + ADFG + BCEG + BCFG + BDEG + BDFG)
-                Assert.IsTrue(oACEG.Amplitude != 0);
-                Assert.AreEqual(oACEH.Amplitude, 0);
-                Assert.IsTrue(oACFG.Amplitude != 0);
-                Assert.AreEqual(oACFH.Amplitude, 0);
-                Assert.IsTrue(oADEG.Amplitude != 0);
-                Assert.AreEqual(oADEH.Amplitude, 0);
-                Assert.IsTrue(oADFG.Amplitude != 0);
-                Assert.AreEqual(oADFH.Amplitude, 0);
-                Assert.IsTrue(oBCEG.Amplitude != 0);
-                Assert.AreEqual(oBCEH.Amplitude, 0);
-                Assert.IsTrue(oBCFG.Amplitude != 0);
-                Assert.AreEqual(oBCFH.Amplitude, 0);
-                Assert.IsTrue(oBDEG.Amplitude != 0);
-                Assert.AreEqual(oBDEH.Amplitude, 0);
-                Assert.IsTrue(oBDFG.Amplitude != 0);
-                Assert.AreEqual(oBDFH.Amplitude, 0);
+                Assert.IsTrue(aceg.Amplitude != 0);
+                Assert.AreEqual(aceh.Amplitude, 0);
+                Assert.IsTrue(acfg.Amplitude != 0);
+                Assert.AreEqual(acfh.Amplitude, 0);
+                Assert.IsTrue(adeg.Amplitude != 0);
+                Assert.AreEqual(adeh.Amplitude, 0);
+                Assert.IsTrue(adfg.Amplitude != 0);
+                Assert.AreEqual(adfh.Amplitude, 0);
+                Assert.IsTrue(bceg.Amplitude != 0);
+                Assert.AreEqual(bceh.Amplitude, 0);
+                Assert.IsTrue(bcfg.Amplitude != 0);
+                Assert.AreEqual(bcfh.Amplitude, 0);
+                Assert.IsTrue(bdeg.Amplitude != 0);
+                Assert.AreEqual(bdeh.Amplitude, 0);
+                Assert.IsTrue(bdfg.Amplitude != 0);
+                Assert.AreEqual(bdfh.Amplitude, 0);
             }
             else
             {
                 //  P_1 = (0001 + 0011 + 0101 + 0111 + 1001 + 1011 + 1101 + 1111) => (ACEH + ACFH + ADEH + ADFH + BCEH + BCFH + BDEH + BDFH)
-                Assert.AreEqual(oACEG.Amplitude, 0);
-                Assert.IsTrue(oACEH.Amplitude != 0);
-                Assert.AreEqual(oACFG.Amplitude, 0);
-                Assert.IsTrue(oACFH.Amplitude != 0);
-                Assert.AreEqual(oADEG.Amplitude, 0);
-                Assert.IsTrue(oADEH.Amplitude != 0);
-                Assert.AreEqual(oADFG.Amplitude, 0);
-                Assert.IsTrue(oADFH.Amplitude != 0);
-                Assert.AreEqual(oBCEG.Amplitude, 0);
-                Assert.IsTrue(oBCEH.Amplitude != 0);
-                Assert.AreEqual(oBCFG.Amplitude, 0);
-                Assert.IsTrue(oBCFH.Amplitude != 0);
-                Assert.AreEqual(oBDEG.Amplitude, 0);
-                Assert.IsTrue(oBDEH.Amplitude != 0);
-                Assert.AreEqual(oBDFG.Amplitude, 0);
-                Assert.IsTrue(oBDFH.Amplitude != 0);
+                Assert.AreEqual(aceg.Amplitude, 0);
+                Assert.IsTrue(aceh.Amplitude != 0);
+                Assert.AreEqual(acfg.Amplitude, 0);
+                Assert.IsTrue(acfh.Amplitude != 0);
+                Assert.AreEqual(adeg.Amplitude, 0);
+                Assert.IsTrue(adeh.Amplitude != 0);
+                Assert.AreEqual(adfg.Amplitude, 0);
+                Assert.IsTrue(adfh.Amplitude != 0);
+                Assert.AreEqual(bceg.Amplitude, 0);
+                Assert.IsTrue(bceh.Amplitude != 0);
+                Assert.AreEqual(bcfg.Amplitude, 0);
+                Assert.IsTrue(bcfh.Amplitude != 0);
+                Assert.AreEqual(bdeg.Amplitude, 0);
+                Assert.IsTrue(bdeh.Amplitude != 0);
+                Assert.AreEqual(bdfg.Amplitude, 0);
+                Assert.IsTrue(bdfh.Amplitude != 0);
             }
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }

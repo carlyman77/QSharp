@@ -13,52 +13,26 @@ namespace QSharp.UnitTests
     [TestClass]
     public class ToffoliGateTests : GateTests
     {
-        #region Constructors
-
         public ToffoliGateTests()
         {
             oToffoliGate = new ToffoliGate();
         }
 
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        private ToffoliGate oToffoliGate;
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
+        private readonly ToffoliGate oToffoliGate;
 
         [TestMethod]
         public void ToffoliGate3QubitControl0Control1Target2()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACE = oRegister.StateVector[0];
-            ComputationalBasisState oACF = oRegister.StateVector[1];
-            ComputationalBasisState oADE = oRegister.StateVector[2];
-            ComputationalBasisState oADF = oRegister.StateVector[3];
-            ComputationalBasisState oBCE = oRegister.StateVector[4];
-            ComputationalBasisState oBCF = oRegister.StateVector[5];
-            ComputationalBasisState oBDE = oRegister.StateVector[6];
-            ComputationalBasisState oBDF = oRegister.StateVector[7];
+            ComputationalBasisState ace = register.StateVector[0];
+            ComputationalBasisState acf = register.StateVector[1];
+            ComputationalBasisState ade = register.StateVector[2];
+            ComputationalBasisState adf = register.StateVector[3];
+            ComputationalBasisState bce = register.StateVector[4];
+            ComputationalBasisState bcf = register.StateVector[5];
+            ComputationalBasisState bde = register.StateVector[6];
+            ComputationalBasisState bdf = register.StateVector[7];
 
             //  CCT CCT
             //  000 000
@@ -81,55 +55,55 @@ namespace QSharp.UnitTests
             //  0   0   0   0   0   0   1   0   BDE
 
             //  TOFFOLI(0, 1, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 1, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 1, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDF);
-            Assert.AreEqual(oRegister[7], oBDE);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bdf);
+            Assert.AreEqual(register[7], bde);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(0, 1, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 1, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 1, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACE);
-            Assert.AreEqual(oRegister[1], oACF);
-            Assert.AreEqual(oRegister[2], oADE);
-            Assert.AreEqual(oRegister[3], oADF);
-            Assert.AreEqual(oRegister[4], oBCE);
-            Assert.AreEqual(oRegister[5], oBCF);
-            Assert.AreEqual(oRegister[6], oBDE);
-            Assert.AreEqual(oRegister[7], oBDF);
+            Assert.AreEqual(register[0], ace);
+            Assert.AreEqual(register[1], acf);
+            Assert.AreEqual(register[2], ade);
+            Assert.AreEqual(register[3], adf);
+            Assert.AreEqual(register[4], bce);
+            Assert.AreEqual(register[5], bcf);
+            Assert.AreEqual(register[6], bde);
+            Assert.AreEqual(register[7], bdf);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl0Control1Target2()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  CCT  CCT
             //  0123 0123
@@ -172,71 +146,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    BDEH
 
             //  TOFFOLI(0, 1, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 1, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 1, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDFG);
-            Assert.AreEqual(oRegister[13], oBDFH);
-            Assert.AreEqual(oRegister[14], oBDEG);
-            Assert.AreEqual(oRegister[15], oBDEH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdfg);
+            Assert.AreEqual(register[13], bdfh);
+            Assert.AreEqual(register[14], bdeg);
+            Assert.AreEqual(register[15], bdeh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(0, 1, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 1, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 1, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl0Control1Target3()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  CC T CC T
             //  0123 0123
@@ -279,71 +253,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    BDFG
 
             //  TOFFOLI(0, 1, 3)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 1, 3, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 1, 3, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEH);
-            Assert.AreEqual(oRegister[13], oBDEG);
-            Assert.AreEqual(oRegister[14], oBDFH);
-            Assert.AreEqual(oRegister[15], oBDFG);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeh);
+            Assert.AreEqual(register[13], bdeg);
+            Assert.AreEqual(register[14], bdfh);
+            Assert.AreEqual(register[15], bdfg);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(0, 1, 3)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 1, 3, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 1, 3, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl0Control2Target1()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  CTC  CTC
             //  0123 0123
@@ -385,71 +359,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    0    BCFH
 
             //  TOFFOLI(0, 2, 1)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 2, 1, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 2, 1, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBDFG);
-            Assert.AreEqual(oRegister[11], oBDFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBCFG);
-            Assert.AreEqual(oRegister[15], oBCFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bdfg);
+            Assert.AreEqual(register[11], bdfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bcfg);
+            Assert.AreEqual(register[15], bcfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(0, 2, 1)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 2, 1, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 2, 1, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl0Control2Target3()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  C CT C CT
             //  0123 0123
@@ -491,71 +465,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    BDFG
 
             //  TOFFOLI(0, 2, 3)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 2, 3, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 2, 3, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFH);
-            Assert.AreEqual(oRegister[11], oBCFG);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFH);
-            Assert.AreEqual(oRegister[15], oBDFG);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfh);
+            Assert.AreEqual(register[11], bcfg);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfh);
+            Assert.AreEqual(register[15], bdfg);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(0, 2, 3)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 2, 3, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 2, 3, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl0Control3Target2()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  C TC C TC
             //  0123 0123
@@ -598,71 +572,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    BDEH
 
             //  TOFFOLI(0, 3, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 3, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 3, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCFH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCEH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDFH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDEH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bcfh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bceh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdfh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdeh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(0, 3, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(0, 3, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(0, 3, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl1Control2Target0()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //  TCC  TCC
             //  0123 0123
@@ -705,71 +679,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    1    0    0    0    0    0    0    0    0    ADFH
 
             //  TOFFOLI(1, 2, 0)
-            oRegister.StateVector = oToffoliGate.ApplyTo(1, 2, 0, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(1, 2, 0, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oBDFG);
-            Assert.AreEqual(oRegister[7], oBDFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oADFG);
-            Assert.AreEqual(oRegister[15], oADFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], bdfg);
+            Assert.AreEqual(register[7], bdfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], adfg);
+            Assert.AreEqual(register[15], adfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(1, 2, 0)
-            oRegister.StateVector = oToffoliGate.ApplyTo(1, 2, 0, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(1, 2, 0, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl1Control2Target3()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //   CCT  CCT
             //  0123 0123
@@ -812,71 +786,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    BDFH
 
             //  TOFOLLI(1, 2, 3)
-            oRegister.StateVector = oToffoliGate.ApplyTo(1, 2, 3, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(1, 2, 3, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFH);
-            Assert.AreEqual(oRegister[7], oADFG);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFH);
-            Assert.AreEqual(oRegister[15], oBDFG);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfh);
+            Assert.AreEqual(register[7], adfg);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfh);
+            Assert.AreEqual(register[15], bdfg);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFOLLI(1, 2, 3)
-            oRegister.StateVector = oToffoliGate.ApplyTo(1, 2, 3, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(1, 2, 3, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl1Control3Target2()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //   CTC  CTC
             //  0123 0123
@@ -919,71 +893,71 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    0    0    1    0    0    BDEH
 
             //  TOFFOLI(1, 3, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(1, 3, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(1, 3, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADFH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADEH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDFH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDEH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adfh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adeh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdfh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdeh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(1, 3, 2)
-            oRegister.StateVector = oToffoliGate.ApplyTo(1, 3, 2, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(1, 3, 2, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
 
         [TestMethod]
         public void ToffoliGate4QubitControl2Control3Target1()
         {
-            Register oRegister = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
+            Register register = new Register(new Qubit[] { Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit(), Qubit.OneValueQubit() });
 
-            ComputationalBasisState oACEG = oRegister.StateVector[0];
-            ComputationalBasisState oACEH = oRegister.StateVector[1];
-            ComputationalBasisState oACFG = oRegister.StateVector[2];
-            ComputationalBasisState oACFH = oRegister.StateVector[3];
-            ComputationalBasisState oADEG = oRegister.StateVector[4];
-            ComputationalBasisState oADEH = oRegister.StateVector[5];
-            ComputationalBasisState oADFG = oRegister.StateVector[6];
-            ComputationalBasisState oADFH = oRegister.StateVector[7];
-            ComputationalBasisState oBCEG = oRegister.StateVector[8];
-            ComputationalBasisState oBCEH = oRegister.StateVector[9];
-            ComputationalBasisState oBCFG = oRegister.StateVector[10];
-            ComputationalBasisState oBCFH = oRegister.StateVector[11];
-            ComputationalBasisState oBDEG = oRegister.StateVector[12];
-            ComputationalBasisState oBDEH = oRegister.StateVector[13];
-            ComputationalBasisState oBDFG = oRegister.StateVector[14];
-            ComputationalBasisState oBDFH = oRegister.StateVector[15];
+            ComputationalBasisState aceg = register.StateVector[0];
+            ComputationalBasisState aceh = register.StateVector[1];
+            ComputationalBasisState acfg = register.StateVector[2];
+            ComputationalBasisState acfh = register.StateVector[3];
+            ComputationalBasisState adeg = register.StateVector[4];
+            ComputationalBasisState adeh = register.StateVector[5];
+            ComputationalBasisState adfg = register.StateVector[6];
+            ComputationalBasisState adfh = register.StateVector[7];
+            ComputationalBasisState bceg = register.StateVector[8];
+            ComputationalBasisState bceh = register.StateVector[9];
+            ComputationalBasisState bcfg = register.StateVector[10];
+            ComputationalBasisState bcfh = register.StateVector[11];
+            ComputationalBasisState bdeg = register.StateVector[12];
+            ComputationalBasisState bdeh = register.StateVector[13];
+            ComputationalBasisState bdfg = register.StateVector[14];
+            ComputationalBasisState bdfh = register.StateVector[15];
 
             //   TCC  TCC
             //  0123 0123
@@ -1026,55 +1000,49 @@ namespace QSharp.UnitTests
             //  0    0    0    0    0    0    0    0    0    0    0    1    0    0    0    0    BCFH
 
             //  TOFFOLI(2, 3, 1)
-            oRegister.StateVector = oToffoliGate.ApplyTo(2, 3, 1, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(2, 3, 1, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oADFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oACFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBDFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBCFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], adfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], acfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bdfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bcfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
 
             //  TOFFOLI(2, 3, 1)
-            oRegister.StateVector = oToffoliGate.ApplyTo(2, 3, 1, oRegister);
+            register.StateVector = oToffoliGate.ApplyTo(2, 3, 1, register);
 
-            Assert.AreEqual(oRegister[0], oACEG);
-            Assert.AreEqual(oRegister[1], oACEH);
-            Assert.AreEqual(oRegister[2], oACFG);
-            Assert.AreEqual(oRegister[3], oACFH);
-            Assert.AreEqual(oRegister[4], oADEG);
-            Assert.AreEqual(oRegister[5], oADEH);
-            Assert.AreEqual(oRegister[6], oADFG);
-            Assert.AreEqual(oRegister[7], oADFH);
-            Assert.AreEqual(oRegister[8], oBCEG);
-            Assert.AreEqual(oRegister[9], oBCEH);
-            Assert.AreEqual(oRegister[10], oBCFG);
-            Assert.AreEqual(oRegister[11], oBCFH);
-            Assert.AreEqual(oRegister[12], oBDEG);
-            Assert.AreEqual(oRegister[13], oBDEH);
-            Assert.AreEqual(oRegister[14], oBDFG);
-            Assert.AreEqual(oRegister[15], oBDFH);
+            Assert.AreEqual(register[0], aceg);
+            Assert.AreEqual(register[1], aceh);
+            Assert.AreEqual(register[2], acfg);
+            Assert.AreEqual(register[3], acfh);
+            Assert.AreEqual(register[4], adeg);
+            Assert.AreEqual(register[5], adeh);
+            Assert.AreEqual(register[6], adfg);
+            Assert.AreEqual(register[7], adfh);
+            Assert.AreEqual(register[8], bceg);
+            Assert.AreEqual(register[9], bceh);
+            Assert.AreEqual(register[10], bcfg);
+            Assert.AreEqual(register[11], bcfh);
+            Assert.AreEqual(register[12], bdeg);
+            Assert.AreEqual(register[13], bdeh);
+            Assert.AreEqual(register[14], bdfg);
+            Assert.AreEqual(register[15], bdfh);
 
-            ValidateComputationalStateVector(oRegister.StateVector);
+            ValidateComputationalStateVector(register.StateVector);
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }
 

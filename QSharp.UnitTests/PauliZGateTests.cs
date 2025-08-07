@@ -13,40 +13,14 @@ namespace QSharp.UnitTests
     [TestClass]
     public class PauliZGateTests : GateTests
     {
-        #region Constructors
-
         public PauliZGateTests()
         {
-            oPauliZGate = new PauliZGate();
-            oRegister = new Register(new Qubit[] { Qubit.OneValueQubit() });
+            _pauliZGate = new PauliZGate();
+            _register = new Register(new Qubit[] { Qubit.OneValueQubit() });
         }
 
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        private PauliZGate oPauliZGate;
-        private Register oRegister;
-
-        #endregion
-
-        #region Properties
-
-        #endregion
-
-        #region Methods
+        private readonly PauliZGate _pauliZGate;
+        private readonly Register _register;
 
         [TestMethod]
         public void ZGate()
@@ -58,30 +32,30 @@ namespace QSharp.UnitTests
             //  1   0   A    = (1 * A) + (0 * B)
             //  0   -1  -B   = (0 * A) + (-1 * B)
 
-            ComputationalBasisState oA = oRegister.StateVector[0];
-            ComputationalBasisState oB = oRegister.StateVector[1];
+            ComputationalBasisState a = _register.StateVector[0];
+            ComputationalBasisState b = _register.StateVector[1];
 
             //  Z(0)
-            oRegister.StateVector = oPauliZGate.ApplyTo(0, oRegister);
+            _register.StateVector = _pauliZGate.ApplyTo(0, _register);
 
             //  A|0> mapped to A|0>
             //  B|1> mapped to -B|1>
-            Assert.AreEqual(oRegister[0], oA);
-            Assert.AreEqual(oRegister[1], oB);
+            Assert.AreEqual(_register[0], a);
+            Assert.AreEqual(_register[1], b);
 
-            Assert.AreEqual(oA.Amplitude.Real, 1);
-            Assert.AreEqual(oA.Amplitude.Imaginary, 0);
+            Assert.AreEqual(a.Amplitude.Real, 1);
+            Assert.AreEqual(a.Amplitude.Imaginary, 0);
             //  Assert.AreEqual(oA.Amplitude.Phase, 0);
             //  Assert.AreEqual(oA.Amplitude.Magnitude, 1);
 
-            Assert.AreEqual(oB.Amplitude.Real, -1);
-            Assert.AreEqual(oB.Amplitude.Imaginary, 0);
+            Assert.AreEqual(b.Amplitude.Real, -1);
+            Assert.AreEqual(b.Amplitude.Imaginary, 0);
             //  Assert.AreEqual(oB.Amplitude.Phase, 0);
             //  Assert.AreEqual(oB.Amplitude.Magnitude, -1);
             
             //  Reversible
             //  Y(0)
-            oRegister.StateVector = oPauliZGate.ApplyTo(0, oRegister);
+            _register.StateVector = _pauliZGate.ApplyTo(0, _register);
 
             //  A   -B
             //  1   0   A   = (1 * A) + (0 * B)
@@ -89,24 +63,18 @@ namespace QSharp.UnitTests
 
             //  A|0> mapped to A|0>
             //  -B|1> mapped to B|1>
-            Assert.AreEqual(oRegister[0], oA);
-            Assert.AreEqual(oRegister[1], oB);
+            Assert.AreEqual(_register[0], a);
+            Assert.AreEqual(_register[1], b);
 
-            Assert.AreEqual(oA.Amplitude.Real, 1);
-            Assert.AreEqual(oA.Amplitude.Imaginary, 0);
+            Assert.AreEqual(a.Amplitude.Real, 1);
+            Assert.AreEqual(a.Amplitude.Imaginary, 0);
             //  Assert.AreEqual(oA.Amplitude.Phase, 0);
             //  Assert.AreEqual(oA.Amplitude.Magnitude, 1);
 
-            Assert.AreEqual(oB.Amplitude.Real, 1);
-            Assert.AreEqual(oB.Amplitude.Imaginary, 0);
+            Assert.AreEqual(b.Amplitude.Real, 1);
+            Assert.AreEqual(b.Amplitude.Imaginary, 0);
             //  Assert.AreEqual(oB.Amplitude.Phase, 0);
             //  Assert.AreEqual(oB.Amplitude.Magnitude, -1);
         }
-
-        #endregion
-
-        #region Delegates
-
-        #endregion
     }
 }

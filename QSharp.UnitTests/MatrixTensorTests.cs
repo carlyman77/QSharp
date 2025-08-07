@@ -3,6 +3,7 @@
 using System;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using QSharp.Mathematics;
 
 #endregion
@@ -12,184 +13,157 @@ namespace QSharp.UnitTests
     [TestClass]
     public class MatrixTensorTests
     {
-        #region Constructors
-
         public MatrixTensorTests()
         {
-            oHadamardGate = new HadamardGate();
-            oIdentityMatrix = new IdentityMatrix();
-            oPauliXGate = new PauliXGate();
-            oPauliYGate = new PauliYGate();
-            oPauliZGate = new PauliZGate();
-			oToffoliGate = new ToffoliGate();
+            _hadamardGate = new HadamardGate();
+            _identityMatrix = new IdentityMatrix();
+            _pauliXGate = new PauliXGate();
+            _pauliYGate = new PauliYGate();
+            _pauliZGate = new PauliZGate();
+            _toffoliGate = new ToffoliGate();
+        }
 
-		}
+        private readonly HadamardGate _hadamardGate;
+        private readonly IdentityMatrix _identityMatrix;
+        private readonly PauliXGate _pauliXGate;
+        private readonly PauliYGate _pauliYGate;
+        private readonly PauliZGate _pauliZGate;
+        private readonly ToffoliGate _toffoliGate;
 
-        #endregion
-
-        #region Constants
-
-        #endregion
-
-        #region Events
-
-        #endregion
-
-        #region Enumerations
-
-        #endregion
-
-        #region Fields
-
-        private HadamardGate oHadamardGate;
-        private IdentityMatrix oIdentityMatrix;
-        private PauliXGate oPauliXGate;
-        private PauliYGate oPauliYGate;
-		private PauliZGate oPauliZGate;
-		private ToffoliGate oToffoliGate;
-
-		#endregion
-
-		#region Properties
-
-		#endregion
-
-		#region Methods
-
-		[TestMethod]
+        [TestMethod]
         public void TensorIH()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oHadamardGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_hadamardGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 2;
+            int index = 1;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIHI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oHadamardGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_hadamardGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 3;
+            int index = 1;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIH()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oHadamardGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_hadamardGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 3;
+            int index = 2;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorHII()
         {
-            Matrix oTensorMatrix = oHadamardGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _hadamardGate.Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 3;
+            int index = 0;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorHIII()
         {
-            Matrix oTensorMatrix = oHadamardGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _hadamardGate.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 4;
+            int index = 0;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIHII()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oHadamardGate).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_hadamardGate).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 4;
+            int index = 1;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIHI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oHadamardGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_hadamardGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 4;
+            int index = 2;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIIH()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oHadamardGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_hadamardGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 3;
-            int iCount = 4;
+            int index = 3;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
@@ -212,70 +186,70 @@ namespace QSharp.UnitTests
             //  {0,0,1,1}
             //  }
 
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliXGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliXGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 2;
+            int index = 1;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIY()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliYGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliYGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 2;
+            int index = 1;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIZ()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliZGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliZGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 2;
+            int index = 1;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorHI()
         {
 
-            Matrix oTensorMatrix = oHadamardGate.Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _hadamardGate.Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 2;
+            int index = 0;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oHadamardGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_hadamardGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
@@ -309,18 +283,18 @@ namespace QSharp.UnitTests
             //  {0,1,0,0}
             //  }
 
-            Matrix oTensorMatrix = oPauliXGate.Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliXGate.Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 2;
+            int index = 0;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
@@ -335,7 +309,7 @@ namespace QSharp.UnitTests
 
             //  If there is a matrix on the left, then move to that.
             //  If there is a matrix on the right, then tensor with that
-            
+
             //  0   1   2
             //  I   X   I
             //  Move to 1
@@ -359,18 +333,18 @@ namespace QSharp.UnitTests
             //  {0,0,0,0,0,1,0,0}
             //  }
 
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliXGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliXGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 3;
+            int index = 1;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
@@ -396,18 +370,18 @@ namespace QSharp.UnitTests
             //  {0,0,0,0,0,0,1,0}
             //  }
 
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oPauliXGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_pauliXGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 3;
-            
-            for (int i = 0; i < iCount; i++)
+            int index = 2;
+            int count = 3;
+
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
@@ -433,398 +407,392 @@ namespace QSharp.UnitTests
             //  {0,0,0,1,0,0,0,0}
             //  }
 
-            Matrix oTensorMatrix = oPauliXGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliXGate.Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 3;
+            int index = 0;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorXIII()
         {
-            Matrix oTensorMatrix = oPauliXGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliXGate.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 4;
+            int index = 0;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIXII()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliXGate).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliXGate).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 4;
+            int index = 1;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIXI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oPauliXGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_pauliXGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 4;
+            int index = 2;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIIX()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oPauliXGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_pauliXGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 3;
-            int iCount = 4;
+            int index = 3;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliXGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliXGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorYI()
         {
-            Matrix oTensorMatrix = oPauliYGate.Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliYGate.Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 2;
+            int index = 0;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIYI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliYGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliYGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 3;
+            int index = 1;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIY()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oPauliYGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_pauliYGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 3;
+            int index = 2;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorYII()
         {
-            Matrix oTensorMatrix = oPauliYGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliYGate.Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 3;
+            int index = 0;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorYIII()
         {
-            Matrix oTensorMatrix = oPauliYGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliYGate.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 4;
+            int index = 0;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIYII()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliYGate).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliYGate).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 4;
+            int index = 1;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIYI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oPauliYGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_pauliYGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 4;
+            int index = 2;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIIY()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oPauliYGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_pauliYGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 3;
-            int iCount = 4;
+            int index = 3;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliYGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliYGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorZI()
         {
-            Matrix oTensorMatrix = oPauliZGate.Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliZGate.Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 2;
+            int index = 0;
+            int count = 2;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIZI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliZGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliZGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 3;
+            int index = 1;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIZ()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oPauliZGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_pauliZGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 3;
+            int index = 2;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorZII()
         {
-            Matrix oTensorMatrix = oPauliZGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliZGate.Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 3;
+            int index = 0;
+            int count = 3;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorZIII()
         {
-            Matrix oTensorMatrix = oPauliZGate.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _pauliZGate.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 0;
-            int iCount = 4;
+            int index = 0;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIZII()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oPauliZGate).Tensor(oIdentityMatrix).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_pauliZGate).Tensor(_identityMatrix).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 1;
-            int iCount = 4;
+            int index = 1;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIZI()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oPauliZGate).Tensor(oIdentityMatrix);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_pauliZGate).Tensor(_identityMatrix);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 2;
-            int iCount = 4;
+            int index = 2;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
         [TestMethod]
         public void TensorIIIZ()
         {
-            Matrix oTensorMatrix = oIdentityMatrix.Tensor(oIdentityMatrix).Tensor(oIdentityMatrix).Tensor(oPauliZGate);
-            Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix tensorMatrix = _identityMatrix.Tensor(_identityMatrix).Tensor(_identityMatrix).Tensor(_pauliZGate);
+            Matrix matrix = new SquareOneMatrix(1);
 
-            int iIndex = 3;
-            int iCount = 4;
+            int index = 3;
+            int count = 4;
 
-            for (int i = 0; i < iCount; i++)
+            for (int i = 0; i < count; i++)
             {
-                oMatrix = ((i == iIndex) ? oMatrix.Tensor(oPauliZGate) : oMatrix.Tensor(new IdentityMatrix()));
+                matrix = ((i == index) ? matrix.Tensor(_pauliZGate) : matrix.Tensor(new IdentityMatrix()));
             }
 
-            Assert.AreEqual(oTensorMatrix, oMatrix);
+            Assert.AreEqual(tensorMatrix, matrix);
         }
 
-		[TestMethod]
-		public void TensorTTTTT()
-		{
-			Matrix oTensorMatrix = oToffoliGate
-				.Tensor(oToffoliGate)
-				.Tensor(oToffoliGate)
-				.Tensor(oToffoliGate)
-				.Tensor(oToffoliGate);
+        [TestMethod]
+        public void TensorTTTTT()
+        {
+            Matrix tensorMatrix = _toffoliGate
+                .Tensor(_toffoliGate)
+                .Tensor(_toffoliGate)
+                .Tensor(_toffoliGate)
+                .Tensor(_toffoliGate);
 
-			Matrix oMatrix = new SquareOneMatrix(1);
+            Matrix matrix = new SquareOneMatrix(1);
 
-			int iCount = 5;
+            int count = 5;
 
-			for (int i = 0; i < iCount; i++)
-			{
-				oMatrix = oMatrix.Tensor(oToffoliGate);
-			}
+            for (int i = 0; i < count; i++)
+            {
+                matrix = matrix.Tensor(_toffoliGate);
+            }
 
-			Assert.AreEqual(oTensorMatrix, oMatrix);
-		}
+            Assert.AreEqual(tensorMatrix, matrix);
+        }
 
-		[TestMethod]
-		public void TensorToffoliUpperBound()
-		{
-			//	Matrix oMatrix = new SquareOneMatrix(1);
-			//	
-			//	int iCount = 10;
-			//	
-			//	for (int i = 0; i < iCount; i++)
-			//	{
-			//		oMatrix = oMatrix.Tensor(oToffoliGate);
-			//	}
-		}
-
-		#endregion
-
-		#region Delegates
-
-		#endregion
-		}
+        [TestMethod]
+        public void TensorToffoliUpperBound()
+        {
+            //	Matrix matrix = new SquareOneMatrix(1);
+            //	
+            //	int count = 10;
+            //	
+            //	for (int i = 0; i < count; i++)
+            //	{
+            //		matrix = matrix.Tensor(oToffoliGate);
+            //	}
+        }
+    }
 }
